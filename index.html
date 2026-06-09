@@ -1,169 +1,563 @@
 <!DOCTYPE html>
-<html  >
+<html lang="en">
 <head>
-  <!-- Site made with Mobirise Website Builder v6.0.1, https://mobirise.com -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v6.0.1, mobirise.com">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/x-architecture-and-engineering.png-1.webp" type="image/x-icon">
-  <meta name="description" content="">
-  
-  
-  <title>About - Orbis Capital Group</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Bebas+Neue:400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue:400&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=abvR5A"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=abvR5A" type="text/css">
+  <meta name="description" content="Orbis Capital Group — early-stage investments, strategic development, and wealth creation in real estate, design, and finance.">
+  <title>Orbis Capital Group</title>
 
-  
-  
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg: #ffffff;
+      --color-bg-secondary: #f7f7f5;
+      --color-text: #111110;
+      --color-text-secondary: #6b6b66;
+      --color-text-tertiary: #9e9e99;
+      --color-border: rgba(0,0,0,0.1);
+      --color-border-mid: rgba(0,0,0,0.15);
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --max-width: 900px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--color-bg);
+      color: var(--color-text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--color-text); }
+
+    .nav-links .active { color: var(--color-text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 400;
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: background 0.15s, opacity 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-dark {
+      background: var(--color-text);
+      color: var(--color-bg);
+      border: none;
+    }
+
+    .btn-dark:hover { opacity: 0.85; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-text-secondary);
+      border: 0.5px solid var(--color-border-mid);
+    }
+
+    .btn-outline:hover {
+      background: var(--color-bg-secondary);
+      color: var(--color-text);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 7rem 2rem 5rem;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 54px);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--color-text);
+      margin-bottom: 1.5rem;
+      max-width: 680px;
+    }
+
+    .hero h1 strong {
+      font-weight: 500;
+    }
+
+    .hero p {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+      max-width: 540px;
+      margin-bottom: 2.25rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .hero-entities {
+      margin-top: 3rem;
+      font-size: 12px;
+      color: var(--color-text-tertiary);
+      letter-spacing: 0.3px;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 0.5px;
+      background: var(--color-border);
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .stat {
+      padding: 2.25rem 2rem;
+      border-right: 0.5px solid var(--color-border);
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-value {
+      font-size: 30px;
+      font-weight: 300;
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--color-text-tertiary);
+      letter-spacing: 0.3px;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .two-col.reverse { direction: rtl; }
+    .two-col.reverse > * { direction: ltr; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: 1rem;
+    }
+
+    .section h2 {
+      font-size: clamp(26px, 3.5vw, 34px);
+      font-weight: 300;
+      letter-spacing: -0.8px;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+
+    .section h2 strong { font-weight: 500; }
+
+    .section p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--color-text-secondary);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .section-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      display: block;
+      background: var(--color-bg-secondary);
+    }
+
+    /* ── CARDS ── */
+    .cards-section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--color-border);
+      border: 0.5px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+
+    .card {
+      background: var(--color-bg);
+      padding: 1.75rem;
+    }
+
+    .card-icon {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 0.5px solid var(--color-border);
+      padding: 3.5rem 2rem 2rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .footer-brand {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .footer-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-offices {
+      font-size: 12px;
+      color: var(--color-text-tertiary);
+      line-height: 1.8;
+    }
+
+    .footer-col h4 {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: 1rem;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--color-text-secondary);
+      margin-bottom: 10px;
+      transition: color 0.15s;
+    }
+
+    .footer-col a:hover { color: var(--color-text); }
+
+    .footer-bottom {
+      border-top: 0.5px solid var(--color-border);
+      padding: 1.5rem 2rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-size: 12px;
+      color: var(--color-text-tertiary);
+      font-weight: 300;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .hero { padding: 4rem 1.25rem 3.5rem; }
+      .hero h1 { font-size: 34px; letter-spacing: -1px; }
+      .stats-bar { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 0.5px solid var(--color-border); padding: 1.5rem 1.25rem; }
+      .stat:last-child { border-bottom: none; }
+      .section, .cards-section { padding: 3.5rem 1.25rem; }
+      .two-col { grid-template-columns: 1fr; gap: 2rem; }
+      .two-col.reverse { direction: ltr; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .footer { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.25rem 1.5rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; padding: 1.5rem 1.25rem; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-in {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
 <body>
-  
-  <section data-bs-version="5.1" class="menu menu1 cid-uTSsvQcBUM" once="menu" id="menu01-0">
-	
 
-	<nav class="navbar navbar-dropdown navbar-expand-lg">
-		<div class="container">
-			<div class="navbar-brand">
-				
-				<span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-5" href="index.html">Orbis Capital</a></span>
-			</div>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<div class="hamburger">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item">
-						<a class="nav-link link text-black text-primary display-4" href="index.html">About</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link link text-black text-primary display-4" href="team.html" aria-expanded="false">Shareholders</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link link text-black text-primary display-4" href="contact.html">Contact</a>
-					</li></ul>
-				
-				<div class="navbar-buttons mbr-section-btn"><a class="btn btn-black display-4" href="page2.html"> Current Investments »</a></div>
-			</div>
-		</div>
-	</nav>
-</section>
+  <!-- NAV -->
+  <nav class="nav">
+    <a class="nav-logo" href="index.html">Orbis Capital</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">About</a></li>
+      <li><a href="team.html">Shareholders</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a class="btn btn-dark" href="page2.html">Current investments →</a>
+  </nav>
 
-<section data-bs-version="5.1" class="header19 cid-uTSsy1BeAN mbr-fullscreen" data-bg-video="https://vimeo.com/428046504" id="header19-1">
-  
+  <!-- HERO -->
+  <section class="hero">
+    <p class="eyebrow">Orbis Capital Group</p>
+    <h1><strong>Shaping the future</strong> of real estate, design &amp; finance</h1>
+    <p>With over 15 years of executive experience across premier U.S. real estate firms, leading Romanian design companies, Hong Kong-based studios, and top-tier financial institutions.</p>
+    <div class="hero-actions">
+      <a class="btn btn-dark" href="page2.html">Current investments →</a>
+      <a class="btn btn-outline" href="team.html">Meet the shareholders</a>
+    </div>
+    <p class="hero-entities">Orbis Capital Inc. &nbsp;·&nbsp; Orbis Capital Ltd. &nbsp;·&nbsp; Orbis Investments SRL</p>
+  </section>
 
-  <div class="mbr-fallback-image disabled"></div>
-  <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(255, 255, 255);"></div>
-  <div class="container">
-    <div class="row">
-      <div class="content-wrap col-12 col-md-8">
-        <h1 class="mbr-section-title mbr-fonts-style mb-4 display-2"><strong>Shaping the Future of </strong><br><strong>Real Estate, Design &amp; Finance</strong></h1>
-        <p class="mbr-fonts-style mbr-text mb-4 display-7">
-          With over 15 years of executive experience across premier U.S. real estate firms, leading Romanian real estate and interior design companies, Hong Kong-based design studios, and top-tier Romanian financial institutions, Orbis Capital excels in early-stage investments, strategic development, and wealth creation in the real estate, design, and finance sectors.
-        </p>
-        <div class="mbr-section-btn"><a class="btn btn-black display-7" href="page2.html">Current Investments »</a></div>
-        <p class="mbr-fonts-style mbr-description mt-4 display-7">
-          Orbis Capital Inc. | Orbis Capital Ltd. |&nbsp;Orbis Investments SRL.</p>
-      </div>
+  <div class="divider"></div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-value">15+</div>
+      <div class="stat-label">Years of executive experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">3</div>
+      <div class="stat-label">Global entities</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">US · UK · RO</div>
+      <div class="stat-label">Operating regions</div>
     </div>
   </div>
-</section>
 
-<section data-bs-version="5.1" class="features38 cid-uTSzZV2ByH" id="features038-3">
-    
+  <div class="divider"></div>
 
-    
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-12 col-lg">
-                <div class="text-wrapper align-left">
-                    <h1 class="mbr-section-title mbr-fonts-style mb-4 display-2">
-                        <strong>Contact Us</strong></h1>
-                    <p class="mbr-text align-left mbr-fonts-style mb-4 display-7">
-                        The best way to begin a dialog with us is by contacting the general partner with the expertise and experience that most closely matches your company’s sector.
-                    </p>
-                    <div class="mbr-section-btn align-left mt-3"><a class="btn btn-white display-7" href="contact.html">Contact Info »</a></div>
-                </div>
-            </div>
-            <div class="col-12 col-md-12 col-lg-6 image-wrapper">
-                <img class="w-100" src="assets/images/mbr-1.jpg" alt="">
-            </div>
-        </div>
-        <div class="row row-reverse justify-content-center">
-
-            <div class="col-12 col-md-12 col-lg">
-                <div class="text-wrapper align-left">
-                    <h1 class="mbr-section-title mbr-fonts-style mb-4 display-2"><strong>About Us</strong></h1>
-                    <p class="mbr-text align-left mbr-fonts-style mb-4 display-7">
-                        With over 15 years of executive experience across premier U.S. real estate firms, leading Romanian real estate and interior design companies, Hong Kong-based design studios, and top-tier Romanian financial institutions, Orbis Capital excels in early-stage investments, strategic development, and wealth creation in the real estate, design, and finance sectors.
-                    </p>
-                    <div class="mbr-section-btn align-left mt-3"><a class="btn btn-white display-7" href="team.html">Meet the Shareholders »</a></div>
-                </div>
-            </div>
-            <div class="col-12 col-md-12 col-lg-6 image-wrapper">
-                <img class="w-100" src="assets/images/mbr-2.jpg" alt="">
-            </div>
-        </div>
-        
+  <!-- ABOUT -->
+  <section class="section fade-in">
+    <div class="two-col">
+      <div>
+        <p class="section-label">About us</p>
+        <h2><strong>Early-stage investments</strong> &amp; strategic development</h2>
+        <p>Orbis Capital excels in early-stage investments, strategic development, and wealth creation across the real estate, design, and finance sectors — with offices in Los Angeles, London, and Bucharest.</p>
+        <a class="btn btn-outline" href="team.html">Meet the shareholders →</a>
+      </div>
+      <img class="section-img" src="assets/images/mbr-2.jpg" alt="Orbis Capital team">
     </div>
-</section>
+  </section>
 
-<section data-bs-version="5.1" class="header1 cid-uTSzVGVwJR" id="header01-2">
-	
+  <div class="divider"></div>
 
-	
-	
-
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-12 col-md-12 col-lg-6 image-wrapper">
-				<img class="w-100" src="assets/images/mbr.jpg" alt="">
-			</div>
-			<div class="col-12 col-lg col-md-12">
-				<div class="text-wrapper align-left">
-					<h1 class="mbr-section-title mbr-fonts-style mb-4 display-2">
-						<strong>Our Portofolio</strong></h1>
-					<p class="mbr-text mbr-fonts-style mb-4 display-7">
-						We work with committed, knowledgeable, high integrity entrepreneurs who have a vision for how their unique technology can create new markets.
-					</p>
-					<div class="mbr-section-btn mt-3"><a class="btn btn-white display-7" href="page2.html">Current Investments »</a></div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section data-bs-version="5.1" class="footer4 cid-uTSDGZ2omV" once="footers" id="footer04-6">
-
-    
-
-    
-
-    <div class="container">
-        <div class="media-container-row align-center mbr-white">
-            <div class="col-12">
-                <p class="mbr-text mb-0 mbr-fonts-style display-7"><strong>© 2025 Orbis Capital Inc. All rights reserved. </strong><br>Unauthorized use, reproduction, or distribution of this website or its content is strictly prohibited.<br><br><strong>Legal Disclaimer</strong><br>This website is operated by Orbis Capital Inc., a corporation registered in the United States; Orbis Capital Ltd., a company registered in the United Kingdom; and Orbis Investments SRL, a company registered in Romania. All information provided herein is for informational purposes only and does not constitute financial, investment, or legal advice.<br><br><strong>Registered Offices:</strong><br>United States: Orbis Capital Inc., 10250 Constellation Blvd, Suite 2300, Los Angeles, CA 90067<br>United Kingdom: Orbis Capital Ltd., 1 Carlton Gardens, London SW1Y 5AF<br>Romania: Orbis Investments SRL, One Tower, Calea Floreasca 165, 16th Floor, Sector 1, Bucharest 012015<br><br><strong>Entities:</strong><br>Orbis Capital Inc., Orbis Capital Ltd., and Orbis Investments SRL (collectively referred to as "Orbis") disclaim all liability for any actions taken based on the content of this website. All investments are subject to risk, and past performance is not indicative of future results.<br><br><a href="assets/files/legal.pdf" class="text-white" target="_blank">Legal Info</a> | <a href="page2.html" class="text-white">Investments</a> | <a href="contact.html" class="text-white">Contact</a></p>
-            </div>
-        </div>
+  <!-- PORTFOLIO -->
+  <section class="section fade-in">
+    <div class="two-col reverse">
+      <div>
+        <p class="section-label">Portfolio</p>
+        <h2><strong>Our portfolio</strong></h2>
+        <p>We work with committed, knowledgeable, high-integrity entrepreneurs who have a vision for how their unique approach can create new markets and lasting value.</p>
+        <a class="btn btn-outline" href="page2.html">Current investments →</a>
+      </div>
+      <img class="section-img" src="assets/images/mbr.jpg" alt="Orbis Capital portfolio">
     </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 0rem;"><a href="https://mobiri.se/3811392" style="flex: 0 0;height: 0rem;position: absolute;width: 0%;z-index: 0;"><img alt="" style="height: 0rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/builder/ai-website-creator.html"></a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/vimeoplayer/player.js"></script>  <script src="assets/theme/js/script.js"></script>  
-  
-  
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTORS -->
+  <section class="cards-section fade-in">
+    <p class="section-label">Sectors</p>
+    <h2 style="font-size: clamp(26px, 3.5vw, 34px); font-weight: 300; letter-spacing: -0.8px; line-height: 1.2; margin-bottom: 0.5rem;">Where we invest</h2>
+    <p style="font-size: 16px; font-weight: 300; color: var(--color-text-secondary); line-height: 1.75; max-width: 480px; margin-top: 0.75rem;">Our experience spans three deeply interconnected sectors across global markets.</p>
+    <div class="cards-grid">
+      <div class="card">
+        <svg class="card-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="4" y="12" width="24" height="18" rx="1" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M1 13L16 3L31 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <rect x="12" y="20" width="8" height="10" rx="0.5" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <h3>Real estate</h3>
+        <p>Premier U.S. firms and leading Romanian developers across residential and commercial segments.</p>
+      </div>
+      <div class="card">
+        <svg class="card-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="3" y="3" width="11" height="11" rx="1" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="18" y="3" width="11" height="11" rx="1" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="3" y="18" width="11" height="11" rx="1" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="18" y="18" width="11" height="11" rx="1" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <h3>Design</h3>
+        <p>Interior design studios across Romania and Hong Kong serving an international client base.</p>
+      </div>
+      <div class="card">
+        <svg class="card-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <polyline points="3,22 10,14 16,18 23,8 29,11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="23,8 29,8 29,14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Finance</h3>
+        <p>Top-tier Romanian financial institutions and cross-border wealth management strategies.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section class="section fade-in">
+    <div class="two-col">
+      <div>
+        <p class="section-label">Contact</p>
+        <h2><strong>Start a conversation</strong></h2>
+        <p>The best way to begin a dialog with us is by contacting the general partner whose expertise most closely matches your company's sector.</p>
+        <a class="btn btn-dark" href="contact.html">Contact us →</a>
+      </div>
+      <img class="section-img" src="assets/images/mbr-1.jpg" alt="Contact Orbis Capital">
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <p class="footer-brand">Orbis Capital</p>
+      <p class="footer-desc">Early-stage investments, strategic development, and wealth creation across real estate, design, and finance.</p>
+      <p class="footer-offices">
+        Los Angeles, CA 90067<br>
+        London SW1Y 5AF<br>
+        Bucharest 012015
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="index.html">About</a>
+      <a href="team.html">Shareholders</a>
+      <a href="page2.html">Investments</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="assets/files/legal.pdf" target="_blank">Legal info</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <p>© 2026 Orbis Capital Group. All rights reserved.</p>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>

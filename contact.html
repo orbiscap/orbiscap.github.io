@@ -1,121 +1,352 @@
 <!DOCTYPE html>
-<html  >
+<html lang="en">
 <head>
-  <!-- Site made with Mobirise Website Builder v6.0.1, https://mobirise.com -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v6.0.1, mobirise.com">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/x-architecture-and-engineering.png-1.webp" type="image/x-icon">
-  <meta name="description" content="">
-  
-  
-  <title>Contact - Orbis Capital Group</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Bebas+Neue:400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue:400&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=dgj7UE"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=dgj7UE" type="text/css">
+  <meta name="description" content="Contact Orbis Capital Group — offices in Los Angeles, London, and Bucharest.">
+  <title>Contact — Orbis Capital Group</title>
 
-  
-  
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg: #ffffff;
+      --color-bg-secondary: #f7f7f5;
+      --color-text: #111110;
+      --color-text-secondary: #6b6b66;
+      --color-text-tertiary: #9e9e99;
+      --color-border: rgba(0,0,0,0.1);
+      --color-border-mid: rgba(0,0,0,0.15);
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --max-width: 900px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--color-bg);
+      color: var(--color-text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--color-border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 56px;
+    }
+    .nav-logo { font-size: 15px; font-weight: 500; letter-spacing: -0.3px; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--color-text-secondary); transition: color 0.15s; }
+    .nav-links a:hover, .nav-links .active { color: var(--color-text); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--font); font-size: 13px; font-weight: 400;
+      padding: 8px 16px; border-radius: var(--radius-md);
+      cursor: pointer; transition: background 0.15s, opacity 0.15s;
+      white-space: nowrap;
+    }
+    .btn-dark { background: var(--color-text); color: var(--color-bg); border: none; }
+    .btn-dark:hover { opacity: 0.85; }
+    .btn-outline {
+      background: transparent; color: var(--color-text-secondary);
+      border: 0.5px solid var(--color-border-mid);
+    }
+    .btn-outline:hover { background: var(--color-bg-secondary); color: var(--color-text); }
+
+    /* HERO */
+    .hero {
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 7rem 2rem 5rem;
+    }
+    .eyebrow {
+      font-size: 11px; font-weight: 400; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--color-text-tertiary);
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 54px); font-weight: 300;
+      line-height: 1.1; letter-spacing: -1.5px;
+      color: var(--color-text); margin-bottom: 1.5rem; max-width: 680px;
+    }
+    .hero h1 strong { font-weight: 500; }
+    .hero p {
+      font-size: 17px; font-weight: 300; color: var(--color-text-secondary);
+      line-height: 1.7; max-width: 540px; margin-bottom: 2.25rem;
+    }
+
+    /* DIVIDER */
+    .divider { height: 0.5px; background: var(--color-border); }
+
+    /* CONTACT SECTION */
+    .section {
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+    .two-col {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+    .section-label {
+      font-size: 11px; font-weight: 400; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--color-text-tertiary);
+      margin-bottom: 1rem;
+    }
+    .section h2 {
+      font-size: clamp(26px, 3.5vw, 34px); font-weight: 300;
+      letter-spacing: -0.8px; line-height: 1.2; margin-bottom: 1.25rem;
+    }
+    .section h2 strong { font-weight: 500; }
+    .section p {
+      font-size: 16px; font-weight: 300; color: var(--color-text-secondary);
+      line-height: 1.75; margin-bottom: 1.5rem;
+    }
+
+    /* CONTACT DETAILS */
+    .contact-details { margin-top: 2rem; }
+    .contact-row {
+      display: flex; gap: 1rem; align-items: baseline;
+      padding: 0.9rem 0;
+      border-bottom: 0.5px solid var(--color-border);
+    }
+    .contact-row:first-child { border-top: 0.5px solid var(--color-border); }
+    .contact-row-label {
+      font-size: 11px; font-weight: 400; letter-spacing: 1.2px;
+      text-transform: uppercase; color: var(--color-text-tertiary);
+      min-width: 90px; flex-shrink: 0;
+    }
+    .contact-row-value {
+      font-size: 15px; font-weight: 300; color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+    .contact-row-value a { color: var(--color-text-secondary); transition: color 0.15s; }
+    .contact-row-value a:hover { color: var(--color-text); }
+
+    /* MAP */
+    .map-wrapper {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--color-bg-secondary);
+    }
+    .map-wrapper iframe {
+      width: 100%; height: 100%; border: none; display: block;
+    }
+
+    /* OFFICES */
+    .offices-section {
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+    .offices-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .office-item {
+      padding: 2.25rem 2rem;
+      border-right: 0.5px solid var(--color-border);
+    }
+    .office-item:last-child { border-right: none; }
+    .office-city {
+      font-size: 16px; font-weight: 500; letter-spacing: -0.2px;
+      margin-bottom: 8px;
+    }
+    .office-address {
+      font-size: 13px; font-weight: 300; color: var(--color-text-secondary);
+      line-height: 1.7;
+    }
+    .office-entity {
+      font-size: 11px; color: var(--color-text-tertiary); margin-top: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    /* FOOTER */
+    .footer {
+      border-top: 0.5px solid var(--color-border);
+      padding: 3.5rem 2rem 2rem;
+      max-width: var(--max-width); margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2.5rem;
+    }
+    .footer-brand { font-size: 15px; font-weight: 500; margin-bottom: 10px; }
+    .footer-desc {
+      font-size: 13px; font-weight: 300; color: var(--color-text-secondary);
+      line-height: 1.65; margin-bottom: 1.25rem;
+    }
+    .footer-offices { font-size: 12px; color: var(--color-text-tertiary); line-height: 1.8; }
+    .footer-col h4 {
+      font-size: 11px; font-weight: 400; letter-spacing: 1.2px;
+      text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: 1rem;
+    }
+    .footer-col a {
+      display: block; font-size: 14px; font-weight: 300;
+      color: var(--color-text-secondary); margin-bottom: 10px; transition: color 0.15s;
+    }
+    .footer-col a:hover { color: var(--color-text); }
+    .footer-bottom {
+      border-top: 0.5px solid var(--color-border);
+      padding: 1.5rem 2rem;
+      max-width: var(--max-width); margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+    .footer-bottom p { font-size: 12px; color: var(--color-text-tertiary); font-weight: 300; }
+
+    /* RESPONSIVE */
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .hero { padding: 4rem 1.25rem 3.5rem; }
+      .hero h1 { font-size: 34px; letter-spacing: -1px; }
+      .section { padding: 3.5rem 1.25rem; }
+      .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
+      .offices-section { padding: 0 1.25rem 3.5rem; }
+      .offices-grid { grid-template-columns: 1fr; }
+      .office-item { border-right: none; border-bottom: 0.5px solid var(--color-border); padding: 1.5rem 0; }
+      .office-item:last-child { border-bottom: none; }
+      .footer { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.25rem 1.5rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; padding: 1.5rem 1.25rem; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+      .fade-in.visible { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
-  
-  <section data-bs-version="5.1" class="menu menu1 cid-uTSsvQcBUM" once="menu" id="menu01-e">
-	
 
-	<nav class="navbar navbar-dropdown navbar-expand-lg">
-		<div class="container">
-			<div class="navbar-brand">
-				
-				<span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-5" href="index.html">Orbis Capital</a></span>
-			</div>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<div class="hamburger">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item">
-						<a class="nav-link link text-black text-primary display-4" href="index.html">About</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link link text-black text-primary display-4" href="team.html" aria-expanded="false">Shareholders</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link link text-black text-primary display-4" href="contact.html">Contact</a>
-					</li></ul>
-				
-				<div class="navbar-buttons mbr-section-btn"><a class="btn btn-black display-4" href="page2.html"> Current Investments »</a></div>
-			</div>
-		</div>
-	</nav>
-</section>
+  <!-- NAV -->
+  <nav class="nav">
+    <a class="nav-logo" href="index.html">Orbis Capital</a>
+    <ul class="nav-links">
+      <li><a href="index.html">About</a></li>
+      <li><a href="team.html">Shareholders</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <a class="btn btn-dark" href="page2.html">Current investments →</a>
+  </nav>
 
-<section data-bs-version="5.1" class="contacts02 map1 cid-uTSSZeZ8Mi" id="contacts02-g">
+  <!-- HERO -->
+  <section class="hero">
+    <p class="eyebrow">Orbis Capital Group</p>
+    <h1><strong>Get in touch</strong></h1>
+    <p>The best way to begin a dialogue with us is by reaching out directly. We look forward to hearing from you.</p>
+  </section>
 
-    
+  <div class="divider"></div>
 
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 content-head">
-                <div class="mbr-section-head mb-5">
-                    <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
-                        <strong>Get in touch »</strong></h3>
-                    
-                </div>
-            </div>
+  <!-- CONTACT + MAP -->
+  <section class="section fade-in">
+    <div class="two-col">
+      <div>
+        <p class="section-label">Contact us</p>
+        <h2><strong>Reach out</strong> to our team</h2>
+        <p>Our team is available Monday through Friday during business hours. Reach us by phone, email, or visit our Los Angeles headquarters.</p>
+
+        <div class="contact-details">
+          <div class="contact-row">
+            <span class="contact-row-label">Phone</span>
+            <span class="contact-row-value"><a href="tel:+13105651301">+1 (310) 565-1301</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-label">Email</span>
+            <span class="contact-row-value"><a href="mailto:office@orbiscapgroup.com">office@orbiscapgroup.com</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-label">Address</span>
+            <span class="contact-row-value">10250 Constellation Blvd, Suite 2300<br>Los Angeles, CA 90067</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-label">Hours</span>
+            <span class="contact-row-value">9:00 AM – 6:00 PM</span>
+          </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="card col-12 col-md-12 col-lg-6">
-                <div class="card-wrapper">
-                    <div class="text-wrapper">
-                        <h5 class="cardTitle mbr-fonts-style mb-2 display-5">
-                            <strong>Contact Us</strong>
-                        </h5>
-                        <ul class="list mbr-fonts-style display-7">
-                            <li class="mbr-text item-wrap">Phone: +1 (310) 565-1301</li>
-                            <li class="mbr-text item-wrap">Email: office@orbiscapgroup.com</li>
-                            <li class="mbr-text item-wrap">Address: Orbis Capital Inc., 10250 Constellation Blvd, Suite 2300, Los Angeles, CA 90067</li>
-                            <li class="mbr-text item-wrap">Working hours: 9:00AM - 6:00PM</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="map-wrapper col-md-12 col-lg-6">
-                <div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDbnCmnHmtigIYiD8jIfeHQv7gW2ANhHD4&amp;q=10250 Constellation Blvd, Suite 2300, Los Angeles, CA 90067" allowfullscreen=""></iframe></div>
-            </div>
-        </div>
+      </div>
+
+      <div class="map-wrapper">
+        <iframe
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDbnCmnHmtigIYiD8jIfeHQv7gW2ANhHD4&q=10250+Constellation+Blvd,+Suite+2300,+Los+Angeles,+CA+90067"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
     </div>
-</section>
+  </section>
 
-<section data-bs-version="5.1" class="footer4 cid-uTSDGZ2omV" once="footers" id="footer04-f">
+  <div class="divider"></div>
 
-    
-
-    
-
-    <div class="container">
-        <div class="media-container-row align-center mbr-white">
-            <div class="col-12">
-                <p class="mbr-text mb-0 mbr-fonts-style display-7"><strong>© 2025 Orbis Capital Inc. All rights reserved. </strong><br>Unauthorized use, reproduction, or distribution of this website or its content is strictly prohibited.<br><br><strong>Legal Disclaimer</strong><br>This website is operated by Orbis Capital Inc., a corporation registered in the United States; Orbis Capital Ltd., a company registered in the United Kingdom; and Orbis Investments SRL, a company registered in Romania. All information provided herein is for informational purposes only and does not constitute financial, investment, or legal advice.<br><br><strong>Registered Offices:</strong><br>United States: Orbis Capital Inc., 10250 Constellation Blvd, Suite 2300, Los Angeles, CA 90067<br>United Kingdom: Orbis Capital Ltd., 1 Carlton Gardens, London SW1Y 5AF<br>Romania: Orbis Investments SRL, One Tower, Calea Floreasca 165, 16th Floor, Sector 1, Bucharest 012015<br><br><strong>Entities:</strong><br>Orbis Capital Inc., Orbis Capital Ltd., and Orbis Investments SRL (collectively referred to as "Orbis") disclaim all liability for any actions taken based on the content of this website. All investments are subject to risk, and past performance is not indicative of future results.<br><br><a href="assets/files/legal.pdf" class="text-white" target="_blank">Legal Info</a> | <a href="page2.html" class="text-white">Investments</a> | <a href="contact.html" class="text-white">Contact</a></p>
-            </div>
-        </div>
+  <!-- OFFICES -->
+  <section class="offices-section fade-in">
+    <div class="offices-grid">
+      <div class="office-item">
+        <p class="office-city">Los Angeles</p>
+        <p class="office-address">10250 Constellation Blvd<br>Suite 2300<br>CA 90067, USA</p>
+        <p class="office-entity">Orbis Capital Inc.</p>
+      </div>
+      <div class="office-item">
+        <p class="office-city">London</p>
+        <p class="office-address">1 Carlton Gardens<br>London SW1Y 5AF<br>United Kingdom</p>
+        <p class="office-entity">Orbis Capital Ltd.</p>
+      </div>
+      <div class="office-item">
+        <p class="office-city">Bucharest</p>
+        <p class="office-address">One Tower, Calea Floreasca 165<br>16th Floor, Sector 1<br>012015, Romania</p>
+        <p class="office-entity">Orbis Investments SRL</p>
+      </div>
     </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 0rem;"><a href="https://mobiri.se/3811392" style="flex: 0 0;height: 0rem;position: absolute;width: 0%;z-index: 0;"><img alt="" style="height: 0rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/builder/no-code-website-builder.html"></a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
-  
-  
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <p class="footer-brand">Orbis Capital</p>
+      <p class="footer-desc">Early-stage investments, strategic development, and wealth creation across real estate, design, and finance.</p>
+      <p class="footer-offices">
+        Los Angeles, CA 90067<br>
+        London SW1Y 5AF<br>
+        Bucharest 012015
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="index.html">About</a>
+      <a href="team.html">Shareholders</a>
+      <a href="page2.html">Investments</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="assets/files/legal.pdf" target="_blank">Legal info</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <p>© 2025 Orbis Capital Inc. All rights reserved. Unauthorized use or reproduction is strictly prohibited.</p>
+    <p>Orbis Capital Inc. · Orbis Capital Ltd. · Orbis Investments SRL</p>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
