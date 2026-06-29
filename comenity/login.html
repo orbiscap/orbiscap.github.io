@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Autentifică-te în contul tău comenity pentru a-ți gestiona cardurile, plățile și limitele de credit.">
+  <title>Autentificare | comenity®</title>
+  <link rel="shortcut icon" href="assets/images/untitled.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;600&family=Outfit:wght@300;400&display=swap" rel="stylesheet">
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="logo-sym" viewBox="0 0 420 90" fill="currentColor">
+      <text y="78" font-family="Outfit, DM Sans, system-ui, sans-serif" font-weight="300" font-size="88" letter-spacing="-2" fill="currentColor">comenity</text>
+      <text y="28" x="406" font-family="Outfit, DM Sans, system-ui, sans-serif" font-weight="300" font-size="22" fill="currentColor">®</text>
+    </symbol>
+  </svg>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white:  #FFFFFF;
+      --off:    #F7F7F7;
+      --rule:   #E8E8E8;
+      --muted:  #A0A0A0;
+      --body:   #3A3A3A;
+      --ink:    #0A0A0A;
+      --err:    #C03A2B;
+    }
+    html, body { height: 100%; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 15px; line-height: 1.6; color: var(--body);
+      background: var(--off);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .logo-svg { display: inline-block; vertical-align: middle; line-height: 0; }
+    .logo-svg svg { display: block; }
+    .logo-dark { color: var(--ink); }
+
+    .auth-top { padding: 32px var(--pad, 40px) 0; }
+    .auth-top a { display: inline-flex; }
+
+    .auth-wrap { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px 20px 60px; }
+
+    .auth-card {
+      width: 100%; max-width: 400px;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      padding: 44px 36px 36px;
+    }
+    .auth-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .auth-card h1 { font-size: 26px; font-weight: 200; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 8px; }
+    .auth-card .auth-sub { font-size: 13px; font-weight: 300; color: var(--muted); margin-bottom: 32px; line-height: 1.6; }
+
+    .field { margin-bottom: 20px; }
+    .field label { display: block; font-size: 11px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .field input {
+      width: 100%; padding: 12px 14px;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink);
+      border: 1px solid var(--rule); background: var(--white);
+      transition: border-color .15s;
+    }
+    .field input:focus { outline: none; border-color: var(--ink); }
+    .field input.field-err { border-color: var(--err); }
+
+    .field-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .field-row label { margin-bottom: 0; }
+    .field-row a { font-size: 12px; font-weight: 400; color: var(--muted); }
+    .field-row a:hover { color: var(--ink); }
+
+    .auth-error {
+      display: none;
+      align-items: center; gap: 8px;
+      font-size: 12.5px; color: var(--err);
+      background: #FBEAE8; border: 1px solid #F1CCC7;
+      padding: 10px 12px; margin-bottom: 18px;
+    }
+    .auth-error.show { display: flex; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      width: 100%; padding: 13px 18px;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: -0.01em;
+      cursor: pointer; border: 1px solid transparent; transition: all .15s;
+    }
+    .btn-black { background: var(--ink); color: var(--white); border-color: var(--ink); }
+    .btn-black:hover { background: #222; }
+    .btn-black:disabled { background: #888; cursor: default; }
+
+    .auth-foot { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; font-size: 12.5px; color: var(--muted); }
+    .auth-foot a { color: var(--muted); }
+    .auth-foot a:hover { color: var(--ink); }
+
+    .auth-hint { margin-top: 18px; font-size: 11.5px; color: var(--muted); text-align: center; }
+    .auth-hint code { background: var(--off); border: 1px solid var(--rule); padding: 1px 6px; font-size: 11px; }
+
+    .auth-page-foot { text-align: center; padding: 0 20px 32px; font-size: 11px; color: #C0C0C0; }
+  </style>
+</head>
+<body>
+
+  <div class="auth-top">
+    <a class="logo-svg logo-dark" href="index.html" aria-label="comenity home">
+      <svg width="100" height="24" viewBox="0 0 440 90"><use href="#logo-sym"/></svg>
+    </a>
+  </div>
+
+  <div class="auth-wrap">
+    <form class="auth-card" id="loginForm" novalidate>
+      <div class="auth-eyebrow">Contul meu</div>
+      <h1>Autentificare</h1>
+      <p class="auth-sub">Introdu datele tale comenity pentru a accesa contul și cardurile asociate.</p>
+
+      <div class="auth-error" id="authError">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>User ID sau parolă incorectă. Verifică datele și încearcă din nou.</span>
+      </div>
+
+      <div class="field">
+        <label for="userId">User ID</label>
+        <input type="text" id="userId" name="userId" autocomplete="username" placeholder="Introdu User ID-ul tău">
+      </div>
+
+      <div class="field">
+        <div class="field-row">
+          <label for="password">Parolă</label>
+          <a href="#" onclick="return false">Ai uitat parola?</a>
+        </div>
+        <input type="password" id="password" name="password" autocomplete="current-password" placeholder="Introdu parola">
+      </div>
+
+      <button type="submit" class="btn btn-black" id="loginBtn">Autentificare</button>
+
+      <p class="auth-hint">Pentru acest demo, folosește <code>test</code> / <code>test</code>.</p>
+
+      <div class="auth-foot">
+        <span>Nu ai cont?</span>
+        <a href="#" onclick="return false">Aplică pentru un card</a>
+      </div>
+    </form>
+  </div>
+
+  <p class="auth-page-foot">©2026 Comenity Capital Bank, a Bread Financial Company. Conexiune securizată.</p>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const userId = document.getElementById('userId');
+    const password = document.getElementById('password');
+    const errorBox = document.getElementById('authError');
+    const btn = document.getElementById('loginBtn');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      userId.classList.remove('field-err');
+      password.classList.remove('field-err');
+      errorBox.classList.remove('show');
+
+      const uid = userId.value.trim();
+      const pwd = password.value;
+
+      if (uid === 'NRM061283' && pwd === 'CX8RcG8wZdrHytrz') {
+        btn.disabled = true;
+        btn.textContent = 'Se autentifică…';
+        sessionStorage.setItem('comenity_user', 'Andrei Popescu');
+        setTimeout(function () {
+          window.location.href = 'dashboard.html';
+        }, 500);
+      } else {
+        errorBox.classList.add('show');
+        userId.classList.add('field-err');
+        password.classList.add('field-err');
+      }
+    });
+  </script>
+</body>
+</html>

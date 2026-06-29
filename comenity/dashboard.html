@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contul tău comenity — activează cardul nou și instrumente pentru cardul comenity Business Cash Flow.">
+  <title>Dashboard | comenity®</title>
+  <link rel="shortcut icon" href="assets/images/untitled.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;600&family=Outfit:wght@300;400&display=swap" rel="stylesheet">
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="logo-sym" viewBox="0 0 420 90" fill="currentColor">
+      <text y="78" font-family="Outfit, DM Sans, system-ui, sans-serif" font-weight="300" font-size="88" letter-spacing="-2" fill="currentColor">comenity</text>
+      <text y="28" x="406" font-family="Outfit, DM Sans, system-ui, sans-serif" font-weight="300" font-size="22" fill="currentColor">®</text>
+    </symbol>
+  </svg>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white:  #FFFFFF;
+      --off:    #F6F5F2;
+      --rule:   #E4E1DA;
+      --rule-soft: #ECE9E2;
+      --muted:  #97928A;
+      --body:   #3A3733;
+      --ink:    #14120F;
+      --gold:   #C9A45C;
+      --gold-deep: #A9803C;
+      --gold-pale: #F2E9D5;
+      --good:   #2E7D4F;
+      --bad:    #B23B2E;
+      --max:    1200px;
+      --pad:    40px;
+      --shadow-sm: 0 1px 2px rgba(20,18,15,0.04);
+      --shadow-md: 0 8px 24px -8px rgba(20,18,15,0.10), 0 2px 6px rgba(20,18,15,0.05);
+      --shadow-lg: 0 24px 60px -16px rgba(20,18,15,0.22), 0 8px 20px -8px rgba(20,18,15,0.10);
+      --ease: cubic-bezier(.2,.7,.3,1);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 15px; line-height: 1.6; color: var(--body);
+      background: var(--off);
+      background-image:
+        radial-gradient(900px 480px at 92% -8%, rgba(201,164,92,0.10), transparent 60%),
+        radial-gradient(700px 420px at -6% 8%, rgba(201,164,92,0.06), transparent 60%);
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--gold-pale); color: var(--ink); }
+    :focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 2px; border-radius: 2px; }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    .logo-svg { display: inline-block; vertical-align: middle; line-height: 0; }
+    .logo-svg svg { display: block; }
+    .logo-dark { color: var(--ink); }
+    .logo-white { color: #fff; }
+
+    /* ── NAV (reused pattern, simplified for app) ── */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px) saturate(1.1); border-bottom: 1px solid var(--rule); }
+    .nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .nav-logo { flex-shrink: 0; display: flex; align-items: center; }
+    .nav-app-label { font-size: 11px; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; margin-left: 8px; letter-spacing: .04em; text-transform: uppercase; }
+    .nav-actions { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+    .nav-user { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--body); }
+    .nav-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(155deg, #232017, var(--ink) 60%); color: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 11.5px; font-weight: 600; letter-spacing: .02em; flex-shrink: 0; box-shadow: inset 0 0 0 1px rgba(201,164,92,0.35); }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: -0.01em; cursor: pointer; text-decoration: none; border: 1px solid transparent; border-radius: 3px; transition: all .18s var(--ease); white-space: nowrap; }
+    .btn-ghost { color: var(--body); border-color: var(--rule); background: var(--white); }
+    .btn-ghost:hover { border-color: var(--ink); color: var(--ink); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+    .btn-black { background: linear-gradient(155deg, #232017, var(--ink) 65%); color: var(--white); border-color: var(--ink); box-shadow: var(--shadow-sm); }
+    .btn-black:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+    .btn-black:active, .btn-ghost:active { transform: translateY(0); }
+    .btn-sm { padding: 7px 14px; font-size: 12.5px; }
+
+    /* ── PAGE ── */
+    .dash { max-width: var(--max); margin: 0 auto; padding: 40px var(--pad) 80px; }
+    .dash-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
+    .dash-head h1 { font-family: 'Outfit', 'DM Sans', sans-serif; font-size: clamp(26px, 3vw, 34px); font-weight: 300; letter-spacing: -0.03em; color: var(--ink); }
+    .dash-head .dash-date { font-size: 12.5px; color: var(--muted); }
+
+    .s-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
+    .s-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--rule), transparent); }
+
+    .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-deep)); color: var(--ink); border-color: transparent; font-weight: 600; box-shadow: 0 8px 20px -6px rgba(201,164,92,0.5); }
+    .btn-gold:hover { box-shadow: 0 10px 26px -6px rgba(201,164,92,0.65); transform: translateY(-1px); }
+
+    /* activation banner */
+    .activate-banner { display: flex; align-items: center; gap: 22px; background: linear-gradient(135deg, #1c1a15, var(--ink) 60%); border-radius: 10px; padding: 28px 30px; margin-bottom: 32px; position: relative; overflow: hidden; box-shadow: var(--shadow-lg); }
+    .activate-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(120% 100% at 100% 0%, rgba(201,164,92,0.28), transparent 60%); }
+    .activate-banner-icon { position: relative; z-index: 1; width: 52px; height: 52px; border-radius: 50%; background: rgba(201,164,92,0.15); border: 1px solid rgba(201,164,92,0.4); color: var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .activate-banner-copy { position: relative; z-index: 1; flex: 1; min-width: 0; }
+    .activate-banner-copy h2 { font-family: 'Outfit', sans-serif; font-size: 19px; font-weight: 400; color: #fff; margin-bottom: 4px; letter-spacing: -0.01em; }
+    .activate-banner-copy p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; max-width: 520px; }
+    .activate-banner .btn-gold { position: relative; z-index: 1; flex-shrink: 0; }
+    @media (max-width: 720px) { .activate-banner { flex-wrap: wrap; } .activate-banner .btn-gold { width: 100%; justify-content: center; } }
+
+    /* OTP code input */
+    .otp-row { display: flex; gap: 10px; justify-content: space-between; }
+    .otp-box { width: 100%; aspect-ratio: 1; max-width: 56px; text-align: center; font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 400; color: var(--ink); border: 1px solid var(--rule); border-radius: 8px; background: var(--off); transition: border-color .15s, box-shadow .15s, background .15s; }
+    .otp-box:focus { outline: none; border-color: var(--gold-deep); background: var(--white); box-shadow: 0 0 0 3px rgba(201,164,92,0.15); }
+    .otp-row.is-error .otp-box { border-color: var(--bad); background: #FBF1EF; }
+    .otp-error { display: none; font-size: 12px; color: var(--bad); margin-top: 10px; }
+    .otp-error.show { display: block; }
+
+    /* locked tool overlay */
+    .tool-card.is-locked, .card-actions .btn.is-locked { opacity: .45; cursor: not-allowed; pointer-events: none; }
+    .locked-hint { font-size: 11px; color: var(--muted); margin-top: 10px; text-align: center; }
+
+    /* empty state */
+    .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 56px 30px; color: var(--muted); }
+    .empty-state-icon { width: 46px; height: 46px; border-radius: 50%; background: var(--off); border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: var(--muted); }
+    .empty-state h4 { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+    .empty-state p { font-size: 12.5px; line-height: 1.6; max-width: 320px; }
+
+    /* summary stat row */
+    .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 44px; }
+    .stat-row.stat-row-3 { grid-template-columns: repeat(3, 1fr); }
+    .stat-cell { background: var(--white); padding: 22px 24px 20px; border: 1px solid var(--rule); border-radius: 6px; box-shadow: var(--shadow-sm); position: relative; transition: box-shadow .2s var(--ease), transform .2s var(--ease); }
+    .stat-cell::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--gold), transparent); border-radius: 6px 6px 0 0; opacity: .55; }
+    .stat-cell:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .stat-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .stat-val { font-family: 'Outfit', sans-serif; font-size: 25px; font-weight: 300; letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; }
+    .stat-sub { font-size: 12px; color: var(--muted); margin-top: 6px; }
+    .stat-sub.good { color: var(--good); }
+    .stat-sub.good::before { content: '●'; font-size: 7px; margin-right: 5px; vertical-align: middle; }
+
+    /* main grid: card + actions | transactions */
+    .dash-grid { display: grid; grid-template-columns: 360px 1fr; gap: 40px; align-items: start; margin-bottom: 52px; }
+
+    .card-visual-wrap { position: relative; border-radius: 18px; }
+    .card-visual-wrap::before {
+      content: ''; position: absolute; inset: -18px; z-index: 0; border-radius: 28px;
+      background: radial-gradient(closest-side, rgba(201,164,92,0.35), transparent 75%);
+      filter: blur(6px); opacity: .65; pointer-events: none;
+    }
+    .card-visual { width: 100%; border-radius: 16px; display: block; position: relative; z-index: 1;
+      box-shadow: var(--shadow-lg);
+      transition: transform .35s var(--ease), filter .35s var(--ease), box-shadow .35s var(--ease);
+    }
+    .card-visual-wrap:hover .card-visual { transform: translateY(-4px) scale(1.012); box-shadow: 0 30px 70px -16px rgba(20,18,15,0.30), 0 10px 24px -8px rgba(20,18,15,0.14); }
+    .card-name-tag { margin-top: 18px; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+    .card-name-tag .ct-name { font-size: 15px; font-weight: 500; color: var(--ink); }
+    .card-name-tag .ct-meta { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+    .ct-status { font-size: 10.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--good); display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0; }
+    .ct-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 3px rgba(46,125,79,0.15); }
+    .ct-status.blocked { color: var(--bad); }
+    .ct-status.blocked::before { background: var(--bad); box-shadow: 0 0 0 3px rgba(178,59,46,0.15); }
+    .ct-status.inactive { color: var(--muted); }
+    .ct-status.inactive::before { background: var(--muted); box-shadow: 0 0 0 3px rgba(151,146,138,0.15); }
+
+    .card-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+    .card-actions .btn { justify-content: center; width: 100%; }
+
+    .tools-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 22px; }
+    .tool-card { background: var(--white); border: 1px solid var(--rule); border-radius: 6px; padding: 18px; cursor: pointer; transition: border-color .18s var(--ease), box-shadow .18s var(--ease), transform .18s var(--ease); box-shadow: var(--shadow-sm); }
+    .tool-card:hover { border-color: var(--gold-deep); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .tool-icon { width: 34px; height: 34px; border-radius: 7px; display: flex; align-items: center; justify-content: center; background: var(--gold-pale); border: 1px solid rgba(201,164,92,0.4); margin-bottom: 12px; color: var(--gold-deep); }
+    .tool-card-title { font-size: 13.5px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+    .tool-card-sub { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+
+    /* transactions */
+    .panel { background: var(--white); border: 1px solid var(--rule); border-radius: 6px; box-shadow: var(--shadow-sm); overflow: hidden; }
+    .panel-head { display: flex; align-items: center; justify-content: space-between; padding: 19px 22px; border-bottom: 1px solid var(--rule); }
+    .panel-head h2 { font-size: 15px; font-weight: 500; color: var(--ink); }
+    .panel-head a { font-size: 12.5px; color: var(--muted); transition: color .15s; }
+    .panel-head a:hover { color: var(--gold-deep); }
+
+    .tx { display: flex; align-items: center; gap: 14px; padding: 14px 22px; border-bottom: 1px solid var(--rule-soft); transition: background .15s; }
+    .tx:hover { background: var(--off); }
+    .tx:last-child { border-bottom: none; }
+    .tx-icon { width: 38px; height: 38px; border-radius: 50%; background: var(--gold-pale); border: 1px solid rgba(201,164,92,0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--gold-deep); font-size: 13px; font-weight: 600; letter-spacing: .01em; }
+    .tx-info { flex: 1; min-width: 0; }
+    .tx-name { font-size: 13.5px; font-weight: 500; color: var(--ink); }
+    .tx-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .tx-amt { font-size: 14px; font-weight: 500; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .tx-amt.pos { color: var(--good); }
+    .tx-status { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-top: 4px; text-align: right; }
+
+    /* lower row: limits + payment */
+    .lower-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .info-panel { background: var(--white); border: 1px solid var(--rule); border-radius: 6px; padding: 26px; box-shadow: var(--shadow-sm); }
+    .info-panel h3 { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 16px; }
+    .bar-track { height: 7px; background: var(--off); border-radius: 4px; margin: 12px 0 9px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(20,18,15,0.06); }
+    .bar-fill { height: 100%; background: linear-gradient(to right, var(--gold-deep), var(--gold)); border-radius: 4px; }
+    .bar-labels { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); }
+
+    .due-row { display: flex; align-items: center; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid var(--rule-soft); }
+    .due-row:last-child { border-bottom: none; }
+    .due-label { font-size: 13px; color: var(--body); }
+    .due-val { font-size: 13px; font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+    /* radio option rows (report / pay modals) */
+    .opt-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 13.5px; color: var(--body); border: 1px solid var(--rule); border-radius: 6px; padding: 13px 15px; cursor: pointer; transition: border-color .15s, background .15s; }
+    .opt-row:hover { border-color: var(--gold); background: var(--off); }
+    .opt-row input[type="radio"] { accent-color: var(--gold-deep); margin-right: 10px; width: 15px; height: 15px; flex-shrink: 0; }
+    .opt-row:has(input:checked) { border-color: var(--gold-deep); background: var(--gold-pale); }
+    .opt-row strong { color: var(--ink); font-variant-numeric: tabular-nums; }
+
+    /* ── MODALS ── */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(20,18,15,0.55); backdrop-filter: blur(3px); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 20px; }
+    .modal-overlay.show { display: flex; animation: fadeIn .2s var(--ease); }
+    .modal-box { background: var(--white); max-width: 440px; width: 100%; border-radius: 10px; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-lg); animation: modalIn .25s var(--ease); }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes modalIn { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .modal-head { display: flex; align-items: center; justify-content: space-between; padding: 22px 26px; border-bottom: 1px solid var(--rule); }
+    .modal-head h3 { font-size: 16px; font-weight: 500; color: var(--ink); }
+    .modal-close { background: none; border: none; cursor: pointer; color: var(--muted); padding: 4px; border-radius: 4px; transition: color .15s, background .15s; }
+    .modal-close:hover { color: var(--ink); background: var(--off); }
+    .modal-body { padding: 26px; }
+
+    /* card details modal visual */
+    .mini-card { background: linear-gradient(135deg, #1c1a15, var(--ink) 55%, #1c1a15); border-radius: 14px; padding: 22px; color: #fff; margin-bottom: 22px; position: relative; overflow: hidden; box-shadow: var(--shadow-md); }
+    .mini-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(140% 90% at 100% 0%, rgba(201,164,92,0.22), transparent 60%); }
+    .mini-card .mc-brand { font-size: 16px; font-weight: 300; position: relative; z-index: 1; }
+    .mini-card .mc-num { font-size: 17px; letter-spacing: 2px; margin: 28px 0 18px; font-weight: 400; font-variant-numeric: tabular-nums; position: relative; z-index: 1; }
+    .mini-card .mc-bottom { display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; color: rgba(255,255,255,0.65); position: relative; z-index: 1; }
+    .mini-card .mc-bottom .mc-name { font-size: 12px; color: #fff; }
+
+    .detail-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--rule-soft); font-size: 13.5px; }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-row .dr-label { color: var(--muted); }
+    .detail-row .dr-val { color: var(--ink); font-weight: 500; }
+    .reveal-toggle { font-size: 12.5px; color: var(--gold-deep); font-weight: 500; cursor: pointer; background: none; border: none; padding: 0; border-bottom: 1px solid currentColor; transition: opacity .15s; }
+    .reveal-toggle:hover { opacity: .75; }
+
+    /* spending power modal */
+    .sp-input-wrap { display: flex; align-items: stretch; border: 1px solid var(--rule); border-radius: 6px; margin-bottom: 8px; overflow: hidden; transition: border-color .15s; }
+    .sp-input-wrap:focus-within { border-color: var(--gold-deep); box-shadow: 0 0 0 3px rgba(201,164,92,0.15); }
+    .sp-input-wrap input { flex: 1; border: none; padding: 14px 16px; font-size: 20px; font-weight: 300; color: var(--ink); font-family: 'DM Sans', sans-serif; font-variant-numeric: tabular-nums; }
+    .sp-input-wrap input:focus { outline: none; }
+    .sp-input-wrap .sp-suffix { display: flex; align-items: center; padding: 0 16px; font-size: 13px; color: var(--muted); background: var(--off); border-left: 1px solid var(--rule); }
+    .sp-hint { font-size: 12px; color: var(--muted); margin-bottom: 22px; line-height: 1.6; }
+
+    .sp-loading { display: none; flex-direction: column; align-items: center; gap: 18px; padding: 34px 0; }
+    .sp-loading.show { display: flex; }
+    .spinner { width: 40px; height: 40px; border-radius: 50%; border: 3px solid var(--rule); border-top-color: var(--gold-deep); animation: spin 0.8s linear infinite; }
+    @media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 2s; } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .sp-loading p { font-size: 13px; color: var(--muted); }
+
+    .sp-result { display: none; text-align: center; padding: 6px 0; }
+    .sp-result.show { display: block; animation: modalIn .3s var(--ease); }
+    .sp-result-icon { width: 56px; height: 56px; border-radius: 50%; background: #EAF5EE; color: var(--good); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; box-shadow: 0 0 0 6px rgba(46,125,79,0.08); }
+    .sp-result h4 { font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+    .sp-result p.sp-requested { font-size: 13px; color: var(--muted); margin-bottom: 22px; line-height: 1.6; }
+    .sp-power-card { background: var(--off); border: 1px solid var(--rule); border-radius: 8px; padding: 20px; margin-bottom: 8px; position: relative; overflow: hidden; }
+    .sp-power-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--gold), transparent); }
+    .sp-power-label { font-size: 10.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .sp-power-val { font-family: 'Outfit', sans-serif; font-size: 29px; font-weight: 300; letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; }
+    .sp-power-sub { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+    @media (max-width: 960px) {
+      .stat-row { grid-template-columns: 1fr 1fr; }
+      .stat-row-3 { grid-template-columns: 1fr 1fr; }
+      .dash-grid { grid-template-columns: 1fr; }
+      .lower-grid { grid-template-columns: 1fr; }
+      .tools-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      :root { --pad: 20px; }
+      .stat-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div style="display:flex;align-items:center">
+      <a class="nav-logo logo-svg logo-dark" href="index.html" aria-label="comenity home">
+        <svg width="100" height="24" viewBox="0 0 440 90"><use href="#logo-sym"/></svg>
+      </a>
+      <span class="nav-app-label">Contul meu</span>
+    </div>
+    <div class="nav-actions">
+      <a class="btn btn-ghost btn-sm" href="ajutor.html">Ajutor</a>
+      <div class="nav-user">
+        <div class="nav-avatar">MN</div>
+        <span id="navUserName">Mihaela Neaga</span>
+      </div>
+      <a class="btn btn-ghost btn-sm" href="login.html" id="logoutBtn">Deconectare</a>
+    </div>
+  </div>
+</nav>
+
+<div class="dash">
+  <div class="dash-head">
+    <h1>Bine ai venit, <span id="greetName">Mihaela</span>.</h1>
+    <div class="dash-date" id="todayDate"></div>
+  </div>
+
+  <!-- ── ACTIVATION BANNER ── -->
+  <div class="activate-banner" id="activateBanner">
+    <div class="activate-banner-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+    </div>
+    <div class="activate-banner-copy">
+      <h2>Noul tău card a fost expediat. Hai să-l activăm.</h2>
+      <p>Cardul comenity Business Cash Flow este pregătit, dar inactiv. Activează-l cu codul primit prin poștă pentru a începe să-l folosești.</p>
+    </div>
+    <button class="btn btn-gold" id="activateCardBtn" type="button">Activează cardul</button>
+  </div>
+
+  <!-- ── ACCOUNT SUMMARY ── -->
+  <div class="stat-row stat-row-3">
+    <div class="stat-cell">
+      <div class="stat-label">Sold curent</div>
+      <div class="stat-val">0 RON</div>
+      <div class="stat-sub">la 29 iun. 2026</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">Cheltuieli luna aceasta</div>
+      <div class="stat-val">0 RON</div>
+      <div class="stat-sub">comenity Business Cash Flow</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">Plată minimă scadentă</div>
+      <div class="stat-val">—</div>
+      <div class="stat-sub">nicio sumă scadentă încă</div>
+    </div>
+  </div>
+
+  <!-- ── CARD + ACTIONS / TRANSACTIONS ── -->
+  <div class="s-label">Cardul tău</div>
+  <div class="dash-grid">
+    <div>
+      <div class="card-visual-wrap">
+        <img class="card-visual" id="cardVisualImg" src="assets/images/business-cash-flow-card.png" alt="comenity Business Cash Flow — card charge, Mihaela Neaga, AMIGAS SEBYTO SRL" style="filter:grayscale(70%) brightness(0.92)">
+      </div>
+      <div class="card-name-tag">
+        <div>
+          <div class="ct-name">comenity Business Cash Flow</div>
+          <div class="ct-meta">Mihaela Neaga · AMIGAS SEBYTO SRL</div>
+        </div>
+        <span class="ct-status inactive" id="cardStatusBadge">Inactiv</span>
+      </div>
+
+      <div class="tools-row">
+        <div class="tool-card" id="openCardDetails">
+          <div class="tool-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          </div>
+          <div class="tool-card-title">Vezi detaliile cardului</div>
+          <div class="tool-card-sub">Număr card, dată expirare și CVV</div>
+        </div>
+        <div class="tool-card" id="openSpendingPower">
+          <div class="tool-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v6h-6"/></svg>
+          </div>
+          <div class="tool-card-title">Verifică puterea de cumpărare</div>
+          <div class="tool-card-sub">Estimează dacă o tranzacție va fi aprobată</div>
+        </div>
+      </div>
+
+      <div class="card-actions">
+        <button class="btn btn-ghost is-locked" id="freezeCardBtn" type="button" disabled>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg>
+          <span id="freezeCardLabel">Blochează cardul temporar</span>
+        </button>
+        <button class="btn btn-ghost is-locked" id="reportLostBtn" type="button" disabled>Raportează card pierdut/furat</button>
+      </div>
+      <p class="locked-hint" id="lockedHint">Activează cardul pentru a debloca aceste opțiuni.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Tranzacții recente</h2>
+      </div>
+
+      <div class="empty-state">
+        <div class="empty-state-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h4>Nicio tranzacție încă</h4>
+        <p>Cardul tău este nou și încă nu a fost folosit. Tranzacțiile vor apărea aici imediat după activare și prima utilizare.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── LOWER: LIMITS + PAYMENT ── -->
+  <div class="s-label">Detalii cont</div>
+  <div class="lower-grid">
+    <div class="info-panel">
+      <h3>Activitate de cheltuieli</h3>
+      <div class="bar-track"><div class="bar-fill" style="width:0%"></div></div>
+      <div class="bar-labels"><span>0 RON sold curent</span><span>0 RON luna aceasta</span></div>
+      <p style="font-size:12px;color:var(--muted);margin-top:14px">comenity Business Cash Flow este un card de tip „charge" — fără limită de credit fixă, cu sold integral scadent lunar. Puterea ta de cumpărare se ajustează dinamic în funcție de activitatea contului.</p>
+    </div>
+    <div class="info-panel">
+      <h3>Plata curentă</h3>
+      <div class="due-row"><span class="due-label">Sold total</span><span class="due-val">0 RON</span></div>
+      <div class="due-row"><span class="due-label">Plată minimă</span><span class="due-val">—</span></div>
+      <div class="due-row"><span class="due-label">Data scadenței</span><span class="due-val">—</span></div>
+      <div class="due-row"><span class="due-label">Plată automată</span><span class="due-val">Neconfigurată</span></div>
+      <button class="btn btn-black is-locked" id="payBillBtn" type="button" disabled style="margin-top:16px;width:100%;justify-content:center">Plătește factura</button>
+      <p class="locked-hint">Nu există nicio sumă de plată pe acest card încă.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── MODAL: ACTIVATE CARD ── -->
+<div class="modal-overlay" id="activateModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Activează cardul</h3>
+      <button class="modal-close" data-close="activateModal" aria-label="Închide">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div id="activateForm">
+        <div class="mini-card" style="margin-bottom:22px">
+          <div class="mc-brand">comenity <span style="opacity:.6;font-size:12px">Business Cash Flow</span></div>
+          <div class="mc-num">•••• •••• •••• 8841</div>
+          <div class="mc-bottom">
+            <div>
+              <div class="mc-name">ANDREI POPESCU</div>
+              <div>AMIGAS SEBYTO SRL</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:10px">EXPIRĂ</div>
+              <div class="mc-name">06/29</div>
+            </div>
+          </div>
+        </div>
+
+        <label style="display:block;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Cod de activare din 6 cifre</label>
+        <p style="font-size:12.5px;color:var(--muted);margin-bottom:16px;line-height:1.6">Am trimis acest cod prin poștă la adresa înregistrată pentru AMIGAS SEBYTO SRL.</p>
+
+        <div class="otp-row" id="otpRow">
+          <input type="text" inputmode="numeric" maxlength="1" class="otp-box" data-otp-index="0">
+          <input type="text" inputmode="numeric" maxlength="1" class="otp-box" data-otp-index="1">
+          <input type="text" inputmode="numeric" maxlength="1" class="otp-box" data-otp-index="2">
+          <input type="text" inputmode="numeric" maxlength="1" class="otp-box" data-otp-index="3">
+          <input type="text" inputmode="numeric" maxlength="1" class="otp-box" data-otp-index="4">
+          <input type="text" inputmode="numeric" maxlength="1" class="otp-box" data-otp-index="5">
+        </div>
+        <p class="otp-error" id="otpError">Cod incorect. Verifică SMS-ul și încearcă din nou.</p>
+
+        <button class="btn btn-black" id="confirmActivateBtn" style="width:100%;margin-top:18px">Confirmă activarea</button>
+        <button class="btn btn-ghost" id="resendCodeBtn" type="button" style="width:100%;margin-top:10px">Retrimite codul</button>
+      </div>
+
+      <div class="sp-loading" id="activateLoading">
+        <div class="spinner"></div>
+        <p>Activăm cardul…</p>
+      </div>
+
+      <div class="sp-result" id="activateResult">
+        <div class="sp-result-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h4>Cardul este activ</h4>
+        <p class="sp-requested">Cardul •••• 8841 a fost activat cu succes și este pregătit de utilizare.</p>
+        <div class="sp-power-card">
+          <div class="sp-power-label">Putere de cumpărare estimată</div>
+          <div class="sp-power-val">180.000 RON</div>
+          <div class="sp-power-sub">Disponibil pe comenity Business Cash Flow, de azi</div>
+        </div>
+        <button class="btn btn-ghost" id="closeActivateBtn" style="width:100%;margin-top:14px">Închide</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── MODAL: CARD DETAILS ── -->
+<div class="modal-overlay" id="cardModal">
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h3>Detaliile cardului</h3>
+      <button class="modal-close" data-close="cardModal" aria-label="Închide">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="mini-card">
+        <div class="mc-brand">comenity <span style="opacity:.6;font-size:12px">Business Cash Flow</span></div>
+        <div class="mc-num" id="cardNumMasked">•••• •••• •••• 8841</div>
+        <div class="mc-bottom">
+          <div>
+            <div class="mc-name">ANDREI POPESCU</div>
+            <div>AMIGAS SEBYTO SRL</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:10px">EXPIRĂ</div>
+            <div class="mc-name" id="cardExpMasked">06/29</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-row"><span class="dr-label">Tip card</span><span class="dr-val">Card charge, Mastercard</span></div>
+      <div class="detail-row"><span class="dr-label">Număr card</span><span class="dr-val" id="cardNumFull">•••• •••• •••• 8841</span></div>
+      <div class="detail-row"><span class="dr-label">Dată expirare</span><span class="dr-val" id="cardExpFull">06/29</span></div>
+      <div class="detail-row"><span class="dr-label">CVV</span><span class="dr-val" id="cardCvv">•••</span></div>
+      <div class="detail-row"><span class="dr-label">Status</span><span class="dr-val" id="cardDetailStatus" style="color:var(--muted)">Inactiv</span></div>
+
+      <div style="margin-top:16px;text-align:center">
+        <button class="reveal-toggle" id="revealToggle">Arată numărul complet și CVV</button>
+      </div>
+      <p style="font-size:11.5px;color:var(--muted);margin-top:18px;line-height:1.6">Nu distribui aceste date niciodată prin telefon, e-mail sau SMS. comenity nu îți va solicita niciodată numărul complet al cardului sau codul CVV.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── MODAL: CHECK SPENDING POWER ── -->
+<div class="modal-overlay" id="spendModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Verifică puterea de cumpărare</h3>
+      <button class="modal-close" data-close="spendModal" aria-label="Închide">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div id="spendForm">
+        <label style="display:block;font-size:11px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Cât vrei să cheltuiești?</label>
+        <div class="sp-input-wrap">
+          <input type="number" inputmode="decimal" id="spendAmount" placeholder="0" min="0" step="1">
+          <div class="sp-suffix">RON</div>
+        </div>
+        <p class="sp-hint">Verificăm în timp real dacă suma introdusă se încadrează în puterea ta de cumpărare curentă, fără să afectăm scorul de credit.</p>
+        <button class="btn btn-black" id="checkSpendBtn" style="width:100%">Verifică</button>
+      </div>
+
+      <div class="sp-loading" id="spendLoading">
+        <div class="spinner"></div>
+        <p>Verificăm puterea de cumpărare…</p>
+      </div>
+
+      <div class="sp-result" id="spendResult">
+        <div class="sp-result-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h4>Tranzacția va fi aprobată</h4>
+        <p class="sp-requested" id="spendRequestedLine">Suma de 0 RON se încadrează în limita disponibilă.</p>
+        <div class="sp-power-card">
+          <div class="sp-power-label">Putere de cumpărare estimată</div>
+          <div class="sp-power-val">180.000 RON</div>
+          <div class="sp-power-sub">Disponibil pe comenity Business Cash Flow, la data de azi</div>
+        </div>
+        <button class="btn btn-ghost" id="spendAgainBtn" style="width:100%;margin-top:14px">Verifică o altă sumă</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── MODAL: REPORT LOST/STOLEN CARD ── -->
+<div class="modal-overlay" id="reportModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Raportează card pierdut/furat</h3>
+      <button class="modal-close" data-close="reportModal" aria-label="Închide">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div id="reportForm">
+        <p style="font-size:13px;color:var(--body);margin-bottom:18px;line-height:1.6;padding:12px 14px;background:#FBF1EF;border:1px solid rgba(178,59,46,0.25);border-radius:6px">Cardul tău va fi blocat permanent și vom emite un card nou cu un număr diferit. Această acțiune nu poate fi anulată.</p>
+        <label style="display:block;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Motivul raportării</label>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:22px">
+          <label class="opt-row">
+            <span><input type="radio" name="reportReason" value="pierdut" checked>Card pierdut</span>
+          </label>
+          <label class="opt-row">
+            <span><input type="radio" name="reportReason" value="furat">Card furat</span>
+          </label>
+          <label class="opt-row">
+            <span><input type="radio" name="reportReason" value="suspect">Tranzacții suspecte pe card</span>
+          </label>
+        </div>
+        <button class="btn btn-black" id="confirmReportBtn" style="width:100%">Confirmă raportarea</button>
+      </div>
+
+      <div class="sp-loading" id="reportLoading">
+        <div class="spinner"></div>
+        <p>Blocăm cardul și pregătim unul nou…</p>
+      </div>
+
+      <div class="sp-result" id="reportResult">
+        <div class="sp-result-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h4>Cardul a fost blocat</h4>
+        <p class="sp-requested">Cardul •••• 8841 a fost blocat permanent. Un card nou va ajunge la sediul firmei în 3-5 zile lucrătoare.</p>
+        <button class="btn btn-ghost" id="closeReportBtn" style="width:100%;margin-top:14px">Închide</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── MODAL: PAY BILL ── -->
+<div class="modal-overlay" id="payModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Plătește factura</h3>
+      <button class="modal-close" data-close="payModal" aria-label="Închide">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div id="payForm">
+        <label style="display:block;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Sumă de plată</label>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px">
+          <label class="opt-row">
+            <span><input type="radio" name="payAmountChoice" value="full" checked>Sold total</span>
+            <strong>18.420 RON</strong>
+          </label>
+          <label class="opt-row">
+            <span><input type="radio" name="payAmountChoice" value="min">Plată minimă</span>
+            <strong>920 RON</strong>
+          </label>
+          <label class="opt-row">
+            <span><input type="radio" name="payAmountChoice" value="custom">Altă sumă</span>
+          </label>
+        </div>
+        <div class="sp-input-wrap" id="payCustomWrap" style="display:none">
+          <input type="number" inputmode="decimal" id="payCustomAmount" placeholder="0" min="1" step="1">
+          <div class="sp-suffix">RON</div>
+        </div>
+
+        <label style="display:block;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:20px 0 10px">Plătește din</label>
+        <div style="border:1px solid var(--rule);border-radius:6px;padding:13px 15px;font-size:13.5px;color:var(--ink);margin-bottom:20px;display:flex;align-items:center;gap:10px;background:var(--off)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;color:var(--gold-deep)"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          Cont curent — AMIGAS SEBYTO SRL · •••• 4471 (BT)
+        </div>
+
+        <button class="btn btn-black" id="confirmPayBtn" style="width:100%">Confirmă plata</button>
+      </div>
+
+      <div class="sp-loading" id="payLoading">
+        <div class="spinner"></div>
+        <p>Procesăm plata…</p>
+      </div>
+
+      <div class="sp-result" id="payResult">
+        <div class="sp-result-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h4>Plată confirmată</h4>
+        <p class="sp-requested" id="payResultLine">Plata a fost inițiată cu succes.</p>
+        <button class="btn btn-ghost" id="closePayBtn" style="width:100%;margin-top:14px">Închide</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer style="border-top:1px solid var(--rule);margin-top:8px;padding:26px var(--pad);text-align:center;font-size:11.5px;color:var(--muted);letter-spacing:.01em">
+  ©2026 Comenity Capital Bank, an Orbis Capital Group company.
+</footer>
+
+<script>
+  // ── Greeting / session name ──
+  const storedName = sessionStorage.getItem('comenity_user');
+  if (storedName) {
+    document.getElementById('navUserName').textContent = storedName;
+    document.getElementById('greetName').textContent = storedName.split(' ')[0];
+  }
+
+  document.getElementById('todayDate').textContent = new Date().toLocaleDateString('ro-RO', { day: 'numeric', month: 'long', year: 'numeric' });
+
+  document.getElementById('logoutBtn').addEventListener('click', function () {
+    sessionStorage.removeItem('comenity_user');
+  });
+
+  // ── Modal helpers ──
+  function openModal(id) { document.getElementById(id).classList.add('show'); }
+  function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+
+  let cardActive = false;
+
+  document.getElementById('openCardDetails').addEventListener('click', function () { openModal('cardModal'); });
+  document.getElementById('openSpendingPower').addEventListener('click', function () { openModal('spendModal'); resetSpendModal(); });
+
+  document.querySelectorAll('[data-close]').forEach(function (btn) {
+    btn.addEventListener('click', function () { closeModal(btn.getAttribute('data-close')); });
+  });
+  document.querySelectorAll('.modal-overlay').forEach(function (ov) {
+    ov.addEventListener('click', function (e) { if (e.target === ov) closeModal(ov.id); });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.show').forEach(function (ov) { closeModal(ov.id); });
+    }
+  });
+
+  // ── Reveal card number / CVV ──
+  let revealed = false;
+  document.getElementById('revealToggle').addEventListener('click', function () {
+    revealed = !revealed;
+    if (revealed) {
+      document.getElementById('cardNumMasked').textContent = '5412 7788 0093 8841';
+      document.getElementById('cardNumFull').textContent = '5412 7788 0093 8841';
+      document.getElementById('cardCvv').textContent = '742';
+      this.textContent = 'Ascunde numărul și CVV';
+    } else {
+      document.getElementById('cardNumMasked').textContent = '•••• •••• •••• 8841';
+      document.getElementById('cardNumFull').textContent = '•••• •••• •••• 8841';
+      document.getElementById('cardCvv').textContent = '•••';
+      this.textContent = 'Arată numărul complet și CVV';
+    }
+  });
+
+  // ── Check Spending Power flow ──
+  const SPENDING_POWER = 180000;
+
+  function resetSpendModal() {
+    document.getElementById('spendForm').style.display = 'block';
+    document.getElementById('spendLoading').classList.remove('show');
+    document.getElementById('spendResult').classList.remove('show');
+    document.getElementById('spendAmount').value = '';
+    document.getElementById('checkSpendBtn').disabled = false;
+    document.getElementById('checkSpendBtn').textContent = 'Verifică';
+  }
+
+  document.getElementById('checkSpendBtn').addEventListener('click', function () {
+    const amountInput = document.getElementById('spendAmount');
+    const amount = parseFloat(amountInput.value);
+    if (!amount || amount <= 0) {
+      amountInput.focus();
+      amountInput.style.borderColor = 'var(--bad)';
+      return;
+    }
+
+    document.getElementById('spendForm').style.display = 'none';
+    document.getElementById('spendLoading').classList.add('show');
+
+    setTimeout(function () {
+      document.getElementById('spendLoading').classList.remove('show');
+      const formatted = amount.toLocaleString('ro-RO', { maximumFractionDigits: 0 });
+      document.getElementById('spendRequestedLine').textContent =
+        'Suma de ' + formatted + ' RON se încadrează în limita disponibilă.';
+      document.getElementById('spendResult').classList.add('show');
+    }, 6000);
+  });
+
+  document.getElementById('spendAgainBtn').addEventListener('click', function () {
+    resetSpendModal();
+  });
+
+  // ── Freeze card toggle ──
+  let frozen = false;
+  const freezeBtn = document.getElementById('freezeCardBtn');
+  const freezeLabel = document.getElementById('freezeCardLabel');
+  const cardVisual = document.querySelector('.card-visual');
+  const statusBadge = document.getElementById('cardStatusBadge');
+
+  function setFrozenUI(isFrozen, label) {
+    frozen = isFrozen;
+    if (isFrozen) {
+      freezeLabel.textContent = 'Deblochează cardul';
+      freezeBtn.style.borderColor = 'var(--bad)';
+      freezeBtn.style.color = 'var(--bad)';
+      if (cardVisual) cardVisual.style.filter = 'grayscale(85%) brightness(0.85)';
+      statusBadge.textContent = label || 'Blocat temporar';
+      statusBadge.classList.add('blocked');
+    } else {
+      freezeLabel.textContent = 'Blochează cardul temporar';
+      freezeBtn.style.borderColor = '';
+      freezeBtn.style.color = '';
+      if (cardVisual) cardVisual.style.filter = '';
+      statusBadge.textContent = 'Activ';
+      statusBadge.classList.remove('blocked');
+      statusBadge.classList.remove('inactive');
+    }
+  }
+
+  freezeBtn.addEventListener('click', function () {
+    if (!cardActive) return;
+    setFrozenUI(!frozen);
+  });
+
+  // ── Report lost/stolen card ──
+  function resetReportModal() {
+    document.getElementById('reportForm').style.display = 'block';
+    document.getElementById('reportLoading').classList.remove('show');
+    document.getElementById('reportResult').classList.remove('show');
+  }
+
+  document.getElementById('reportLostBtn').addEventListener('click', function () {
+    if (!cardActive) return;
+    openModal('reportModal');
+    resetReportModal();
+  });
+
+  document.getElementById('confirmReportBtn').addEventListener('click', function () {
+    document.getElementById('reportForm').style.display = 'none';
+    document.getElementById('reportLoading').classList.add('show');
+    setTimeout(function () {
+      document.getElementById('reportLoading').classList.remove('show');
+      document.getElementById('reportResult').classList.add('show');
+      // reflect the block on the dashboard itself
+      setFrozenUI(true, 'Blocat');
+    }, 1800);
+  });
+
+  document.getElementById('closeReportBtn').addEventListener('click', function () {
+    closeModal('reportModal');
+  });
+
+  // ── Pay bill flow ──
+  const payAmounts = { full: 18420, min: 920 };
+
+  function resetPayModal() {
+    document.getElementById('payForm').style.display = 'block';
+    document.getElementById('payLoading').classList.remove('show');
+    document.getElementById('payResult').classList.remove('show');
+    document.getElementById('payCustomWrap').style.display = 'none';
+    document.getElementById('payCustomAmount').value = '';
+    document.querySelector('input[name="payAmountChoice"][value="full"]').checked = true;
+  }
+
+  document.getElementById('payBillBtn').addEventListener('click', function () {
+    if (this.disabled) return;
+    openModal('payModal');
+    resetPayModal();
+  });
+
+  document.querySelectorAll('input[name="payAmountChoice"]').forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      document.getElementById('payCustomWrap').style.display = (this.value === 'custom') ? 'flex' : 'none';
+    });
+  });
+
+  document.getElementById('confirmPayBtn').addEventListener('click', function () {
+    const choice = document.querySelector('input[name="payAmountChoice"]:checked').value;
+    let amount;
+    if (choice === 'custom') {
+      const customInput = document.getElementById('payCustomAmount');
+      amount = parseFloat(customInput.value);
+      if (!amount || amount <= 0) {
+        customInput.focus();
+        customInput.style.borderColor = 'var(--bad)';
+        return;
+      }
+    } else {
+      amount = payAmounts[choice];
+    }
+
+    document.getElementById('payForm').style.display = 'none';
+    document.getElementById('payLoading').classList.add('show');
+
+    setTimeout(function () {
+      document.getElementById('payLoading').classList.remove('show');
+      const formatted = amount.toLocaleString('ro-RO', { maximumFractionDigits: 0 });
+      document.getElementById('payResultLine').textContent =
+        'Plata de ' + formatted + ' RON a fost inițiată din contul •••• 4471 și va fi procesată în 1-2 zile lucrătoare.';
+      document.getElementById('payResult').classList.add('show');
+    }, 1600);
+  });
+
+  document.getElementById('closePayBtn').addEventListener('click', function () {
+    closeModal('payModal');
+  });
+
+  // ── Activate card flow ──
+  const ACTIVATION_CODE = '781900';
+  const otpBoxes = Array.from(document.querySelectorAll('.otp-box'));
+  const otpRow = document.getElementById('otpRow');
+  const otpError = document.getElementById('otpError');
+
+  function resetActivateModal() {
+    document.getElementById('activateForm').style.display = 'block';
+    document.getElementById('activateLoading').classList.remove('show');
+    document.getElementById('activateResult').classList.remove('show');
+    otpBoxes.forEach(function (box) { box.value = ''; });
+    otpRow.classList.remove('is-error');
+    otpError.classList.remove('show');
+    document.getElementById('confirmActivateBtn').disabled = false;
+    document.getElementById('confirmActivateBtn').textContent = 'Confirmă activarea';
+    otpBoxes[0].focus();
+  }
+
+  document.getElementById('activateCardBtn').addEventListener('click', function () {
+    openModal('activateModal');
+    resetActivateModal();
+  });
+
+  otpBoxes.forEach(function (box, i) {
+    box.addEventListener('input', function () {
+      this.value = this.value.replace(/[^0-9]/g, '').slice(0, 1);
+      otpRow.classList.remove('is-error');
+      otpError.classList.remove('show');
+      if (this.value && otpBoxes[i + 1]) otpBoxes[i + 1].focus();
+    });
+    box.addEventListener('keydown', function (e) {
+      if (e.key === 'Backspace' && !this.value && otpBoxes[i - 1]) {
+        otpBoxes[i - 1].focus();
+      }
+    });
+    box.addEventListener('paste', function (e) {
+      e.preventDefault();
+      const digits = (e.clipboardData.getData('text') || '').replace(/[^0-9]/g, '').slice(0, 6).split('');
+      digits.forEach(function (d, idx) { if (otpBoxes[idx]) otpBoxes[idx].value = d; });
+      const next = otpBoxes[Math.min(digits.length, 5)];
+      if (next) next.focus();
+    });
+  });
+
+  document.getElementById('confirmActivateBtn').addEventListener('click', function () {
+    const entered = otpBoxes.map(function (b) { return b.value; }).join('');
+    if (entered.length < 6) {
+      otpRow.classList.add('is-error');
+      otpError.textContent = 'Introdu toate cele 6 cifre din cod.';
+      otpError.classList.add('show');
+      return;
+    }
+    if (entered !== ACTIVATION_CODE) {
+      otpRow.classList.add('is-error');
+      otpError.textContent = 'Cod incorect. Verifică SMS-ul și încearcă din nou.';
+      otpError.classList.add('show');
+      otpBoxes.forEach(function (box) { box.value = ''; });
+      otpBoxes[0].focus();
+      return;
+    }
+
+    document.getElementById('activateForm').style.display = 'none';
+    document.getElementById('activateLoading').classList.add('show');
+
+    setTimeout(function () {
+      document.getElementById('activateLoading').classList.remove('show');
+      document.getElementById('activateResult').classList.add('show');
+      activateCardUI();
+    }, 1600);
+  });
+
+  document.getElementById('resendCodeBtn').addEventListener('click', function () {
+    const original = this.textContent;
+    this.textContent = 'Cod retrimis ✓';
+    this.disabled = true;
+    setTimeout(function () { document.getElementById('resendCodeBtn').textContent = original; document.getElementById('resendCodeBtn').disabled = false; }, 2500);
+  });
+
+  document.getElementById('closeActivateBtn').addEventListener('click', function () {
+    closeModal('activateModal');
+  });
+
+  function activateCardUI() {
+    cardActive = true;
+
+    // banner becomes a quiet confirmation instead of disappearing abruptly
+    const banner = document.getElementById('activateBanner');
+    banner.querySelector('.activate-banner-icon').innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>';
+    banner.querySelector('.activate-banner-copy h2').textContent = 'Cardul tău este activ.';
+    banner.querySelector('.activate-banner-copy p').textContent = 'comenity Business Cash Flow este pregătit de utilizare. Poți plăti oriunde este acceptat Mastercard.';
+    const activateBtn = document.getElementById('activateCardBtn');
+    activateBtn.remove();
+
+    // card visual + status
+    document.getElementById('cardVisualImg').style.filter = '';
+    statusBadge.textContent = 'Activ';
+    statusBadge.classList.remove('inactive');
+
+    // unlock card detail status line
+    const cardDetailStatus = document.getElementById('cardDetailStatus');
+    if (cardDetailStatus) { cardDetailStatus.textContent = 'Activ'; cardDetailStatus.style.color = ''; }
+
+    // unlock freeze / report buttons
+    [freezeBtn, document.getElementById('reportLostBtn')].forEach(function (btn) {
+      btn.disabled = false;
+      btn.classList.remove('is-locked');
+    });
+    const hint = document.getElementById('lockedHint');
+    if (hint) hint.remove();
+  }
+
+</script>
+</body>
+</html>
