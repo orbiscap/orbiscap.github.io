@@ -312,7 +312,7 @@
     <div class="stat-cell">
       <div class="stat-label">Sold curent</div>
       <div class="stat-val">0 RON</div>
-      <div class="stat-sub">la 29 iun. 2026</div>
+      <div class="stat-sub">azi</div>
     </div>
     <div class="stat-cell">
       <div class="stat-label">Cheltuieli luna aceasta</div>
@@ -330,9 +330,6 @@
   <div class="s-label">Cardul tău</div>
   <div class="dash-grid">
     <div>
-      <div class="card-visual-wrap">
-        <img class="card-visual" id="cardVisualImg" src="assets/images/business-cash-flow-card.png" alt="comenity Business Cash Flow — card charge, Mihaela Neaga, AMIGAS SEBYTO SRL" style="filter:grayscale(70%) brightness(0.92)">
-      </div>
       <div class="card-name-tag">
         <div>
           <div class="ct-name">comenity Business Cash Flow</div>
@@ -442,10 +439,9 @@
           <input type="text" inputmode="numeric" maxlength="1" class="otp-box" data-otp-index="4">
           <input type="text" inputmode="numeric" maxlength="1" class="otp-box" data-otp-index="5">
         </div>
-        <p class="otp-error" id="otpError">Cod incorect. Verifică SMS-ul și încearcă din nou.</p>
+        <p class="otp-error" id="otpError">Cod incorect. Verifică Cod-ul și încearcă din nou.</p>
 
         <button class="btn btn-black" id="confirmActivateBtn" style="width:100%;margin-top:18px">Confirmă activarea</button>
-        <button class="btn btn-ghost" id="resendCodeBtn" type="button" style="width:100%;margin-top:10px">Retrimite codul</button>
       </div>
 
       <div class="sp-loading" id="activateLoading">
@@ -921,7 +917,7 @@
     }
     if (entered !== ACTIVATION_CODE) {
       otpRow.classList.add('is-error');
-      otpError.textContent = 'Cod incorect. Verifică SMS-ul și încearcă din nou.';
+      otpError.textContent = 'Cod incorect. Verifică Cod-ul și încearcă din nou.';
       otpError.classList.add('show');
       otpBoxes.forEach(function (box) { box.value = ''; });
       otpBoxes[0].focus();
