@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Informații despre participarea Comenity Capital Bank S.A. la Fondul de Garantare a Depozitelor Bancare și plafonul de garantare aplicabil.">
+  <title>Garantarea depozitelor | comenity®</title>
+  <link rel="shortcut icon" href="assets/images/untitled.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;600&family=Outfit:wght@300;400&display=swap" rel="stylesheet">
+
+  <!-- Reusable logo SVG — rendered via <use> or inline at each site -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="logo-sym" viewBox="0 0 420 90" fill="currentColor">
+      <text
+        y="78"
+        font-family="Outfit, DM Sans, system-ui, sans-serif"
+        font-weight="300"
+        font-size="88"
+        letter-spacing="-2"
+        fill="currentColor"
+      >comenity</text>
+      <!-- ® superscript -->
+      <text y="28" x="406" font-family="Outfit, DM Sans, system-ui, sans-serif"
+        font-weight="300" font-size="22" fill="currentColor">®</text>
+    </symbol>
+  </svg>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:  #FFFFFF;
+      --off:    #F7F7F7;
+      --rule:   #E8E8E8;
+      --muted:  #A0A0A0;
+      --body:   #3A3A3A;
+      --ink:    #0A0A0A;
+      --max:    1200px;
+      --pad:    40px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--body);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── LOGO COMPONENT ── */
+    .logo-svg {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 0;
+    }
+    .logo-svg svg {
+      display: block;
+    }
+    /* color variants */
+    .logo-dark  { color: var(--ink); }
+    .logo-white { color: #ffffff; }
+    .logo-muted { color: var(--muted); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .nav-logo { flex-shrink: 0; display: flex; align-items: center; }
+
+    .nav-links {
+      display: flex; align-items: center; list-style: none;
+      gap: 0; flex: 1; justify-content: center;
+    }
+    .nav-links li { position: relative; }
+    .nav-links li > a {
+      display: block; padding: 6px 14px;
+      font-size: 13px; font-weight: 400; color: var(--body);
+      transition: color .15s;
+    }
+    .nav-links li > a:hover { color: var(--ink); }
+
+    .dd {
+      display: none; position: absolute;
+      top: calc(100% + 12px); left: 0;
+      background: var(--white); border: 1px solid var(--rule);
+      min-width: 220px; padding: 6px 0;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .nav-links li:hover .dd { display: block; }
+
+    .dd-group { padding: 8px 0 4px; border-top: 1px solid var(--rule); margin-top: 4px; }
+    .dd-group:first-child { border-top: none; margin-top: 0; padding-top: 6px; }
+    .dd-label {
+      padding: 0 16px 4px;
+      font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .dd a {
+      display: flex; align-items: center; gap: 6px;
+      padding: 7px 16px; font-size: 13px; font-weight: 300;
+      color: var(--body); transition: color .12s;
+    }
+    .dd a:hover { color: var(--ink); }
+
+    .nav-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; font-weight: 500; letter-spacing: -0.01em;
+      cursor: pointer; text-decoration: none;
+      border: 1px solid transparent;
+      transition: all .15s; white-space: nowrap; border-radius: 0;
+    }
+    .btn-ghost { color: var(--body); border-color: var(--rule); background: transparent; }
+    .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+    .btn-black { background: var(--ink); color: var(--white); border-color: var(--ink); }
+    .btn-black:hover { background: #222; }
+    .btn-white-inv { background: var(--white); color: var(--ink); border-color: var(--white); }
+    .btn-white-inv:hover { background: var(--off); }
+    .btn-ghost-inv { color: var(--white); border-color: rgba(255,255,255,0.3); background: transparent; }
+    .btn-ghost-inv:hover { border-color: var(--white); }
+    .btn-lg { padding: 13px 28px; font-size: 14px; }
+
+    .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-burger span { display: block; width: 20px; height: 1px; background: var(--ink); }
+
+    /* ── HERO ── */
+    .hero-wrap {
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--rule);
+      background: var(--white);
+    }
+
+    /* Animated line canvas sits behind content */
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 2;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 100px var(--pad) 88px;
+    }
+
+    .hero-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 72px;
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 6vw, 88px);
+      font-weight: 200;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      color: var(--ink);
+      max-width: 720px;
+    }
+    .hero h1 strong { font-weight: 600; }
+
+    .hero-right {
+      flex-shrink: 0;
+      text-align: right;
+      padding-top: 8px;
+    }
+    .hero-stat {
+      font-size: 11px; font-weight: 400; color: var(--muted);
+      letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 4px;
+    }
+    .hero-stat-val {
+      font-size: 36px; font-weight: 200; letter-spacing: -0.04em;
+      color: var(--ink); line-height: 1;
+    }
+
+    .hero-bottom {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 40px; flex-wrap: wrap;
+    }
+    .hero-sub {
+      font-size: 16px; font-weight: 300; color: var(--muted);
+      max-width: 460px; line-height: 1.65;
+    }
+    .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* ── SECTION LABELS ── */
+    .s-label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 32px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .s-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+    /* ── PRODUCT SECTIONS ── */
+    .products-section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+    .products-header { padding: 0 var(--pad); max-width: var(--max); margin: 0 auto 56px; }
+    .products-header h2 {
+      font-size: clamp(28px, 4vw, 48px); font-weight: 200;
+      letter-spacing: -0.03em; color: var(--ink); line-height: 1.1; max-width: 560px;
+    }
+    .products-header p {
+      font-size: 14px; font-weight: 300; color: var(--muted);
+      max-width: 440px; margin-top: 16px; line-height: 1.7;
+    }
+
+    .product-table { border-top: 1px solid var(--rule); }
+
+    .product-row {
+      display: grid;
+      grid-template-columns: 140px 240px 1fr 1fr 1fr auto;
+      align-items: center;
+      border-bottom: 1px solid var(--rule);
+      padding: 0 var(--pad);
+      max-width: var(--max); margin: 0 auto;
+      min-height: 100px; gap: 24px;
+      transition: background .15s;
+    }
+    .product-row:hover { background: var(--off); }
+
+    .product-name {
+      font-size: 15px; font-weight: 500; color: var(--ink);
+      letter-spacing: -0.02em;
+      display: flex; align-items: center; gap: 4px; flex-wrap: wrap;
+    }
+    .product-type {
+      font-size: 11px; font-weight: 400; color: var(--muted);
+      letter-spacing: 0.04em; text-transform: uppercase; margin-top: 3px;
+    }
+    .product-cell { font-size: 13px; font-weight: 300; color: var(--body); }
+    .product-cell-label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 3px;
+    }
+    .product-cell-val { font-size: 14px; font-weight: 400; color: var(--ink); letter-spacing: -0.01em; }
+
+    .product-image-cell {
+      width: 140px; height: 88px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .product-image-cell img {
+      max-width: 130px; max-height: 82px; object-fit: contain; border-radius: 6px;
+    }
+
+    .table-header {
+      display: grid;
+      grid-template-columns: 140px 240px 1fr 1fr 1fr auto;
+      padding: 12px var(--pad); max-width: var(--max); margin: 0 auto;
+      gap: 24px; border-bottom: 1px solid var(--rule);
+    }
+    .th { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── SPLIT ── */
+    .split-section { background: var(--ink); padding: 80px 0; }
+    .split-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 var(--pad);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .split-content .s-label { color: rgba(255,255,255,0.3); }
+    .split-content .s-label::after { background: rgba(255,255,255,0.1); }
+    .split-content h2 {
+      font-size: clamp(32px, 4vw, 52px); font-weight: 200;
+      letter-spacing: -0.04em; color: var(--white); line-height: 1.05; margin-bottom: 20px;
+    }
+    .split-content h2 strong { font-weight: 600; }
+    .split-content p {
+      font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.45);
+      line-height: 1.75; max-width: 400px; margin-bottom: 36px;
+    }
+    .split-image { display: flex; align-items: center; justify-content: center; }
+    .split-image img { width: 100%; max-width: 460px; }
+
+    /* ── WHY ── */
+    .why-section { padding: 80px 0; border-bottom: 1px solid var(--rule); }
+    .why-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+    .why-header {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: end; margin-bottom: 56px;
+    }
+    .why-header h2 {
+      font-size: clamp(28px, 4vw, 48px); font-weight: 200;
+      letter-spacing: -0.03em; color: var(--ink); line-height: 1.1;
+    }
+    .why-header p { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+    .why-list { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule); }
+    .why-item {
+      padding: 32px 32px 32px 0; border-right: 1px solid var(--rule);
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .why-item:nth-child(3), .why-item:last-child { border-right: none; }
+    .why-item:nth-child(4), .why-item:nth-child(5), .why-item:nth-child(6) {
+      border-top: 1px solid var(--rule); padding-top: 32px;
+    }
+    .why-item:nth-child(4), .why-item:nth-child(5) { border-right: 1px solid var(--rule); }
+    .why-num { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; color: var(--muted); }
+    .why-title { font-size: 15px; font-weight: 500; color: var(--ink); letter-spacing: -0.02em; }
+    .why-text { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.65; }
+
+    /* ── LEGAL ── */
+    .legal-section { padding: 40px 0; border-bottom: 1px solid var(--rule); background: var(--off); }
+    .legal-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+    .legal-toggle {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      cursor: pointer; padding: 12px 0; user-select: none;
+      background: none; border: none; width: 100%; text-align: left;
+    }
+    .legal-toggle span { font-size: 12px; font-weight: 400; color: var(--muted); }
+    .legal-chevron { color: var(--muted); transition: transform .2s; flex-shrink: 0; }
+    .legal-toggle.open .legal-chevron { transform: rotate(180deg); }
+    .legal-body { display: none; padding: 20px 0 8px; }
+    .legal-body.open { display: block; }
+    .legal-body p { font-size: 11.5px; font-weight: 300; color: #A8A8A8; line-height: 1.8; margin-bottom: 10px; }
+
+    /* ── FOOTER ── */
+    footer { padding: 60px 0 40px; background: var(--white); }
+    .footer-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+    .footer-top {
+      display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: 40px; padding-bottom: 48px; border-bottom: 1px solid var(--rule);
+    }
+    .footer-tagline { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.6; max-width: 260px; margin-top: 12px; }
+    .footer-col-title { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col li a, .footer-col li span { font-size: 13px; font-weight: 300; color: var(--muted); transition: color .12s; }
+    .footer-col li a:hover { color: var(--ink); }
+    .footer-bottom { padding-top: 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-links { display: flex; gap: 6px; flex-wrap: wrap; }
+    .footer-links a { font-size: 12px; font-weight: 300; color: var(--muted); padding: 5px 12px; border: 1px solid var(--rule); transition: all .12s; }
+    .footer-links a:hover { color: var(--ink); border-color: var(--ink); }
+    .footer-social { display: flex; gap: 8px; }
+    .footer-social a { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--rule); color: var(--muted); transition: all .12s; }
+    .footer-social a:hover { color: var(--ink); border-color: var(--ink); }
+    .footer-copy { font-size: 11px; font-weight: 300; color: #C0C0C0; margin-top: 20px; line-height: 1.7; }
+
+    /* ── SCROLL REVEAL ── */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+      .reveal.visible { opacity: 1; transform: none; }
+      .reveal-delay-1 { transition-delay: .1s; }
+      .reveal-delay-2 { transition-delay: .2s; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .nav-links, .nav-actions { display: none; }
+      .nav-burger { display: flex; }
+      .hero-top { flex-direction: column; }
+      .hero-right { text-align: left; }
+      .product-row, .table-header { grid-template-columns: 1fr 1fr; min-height: auto; padding: 20px var(--pad); }
+      .table-header { display: none; }
+      .product-image-cell { display: none; }
+      .split-inner { grid-template-columns: 1fr; }
+      .split-image { display: none; }
+      .why-header { grid-template-columns: 1fr; gap: 16px; }
+      .why-list { grid-template-columns: 1fr 1fr; }
+      .why-item:nth-child(2n) { border-right: none; }
+      .why-item:nth-child(3) { border-right: 1px solid var(--rule); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      :root { --pad: 20px; }
+      .hero h1 { font-size: 38px; }
+      .product-row { grid-template-columns: 1fr; gap: 12px; }
+      .why-list { grid-template-columns: 1fr; }
+      .why-item { border-right: none !important; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+  <style>
+    /* ── INNER PAGE CONTENT ── */
+    .page-hero { padding: 64px var(--pad) 40px; max-width: var(--max); margin: 0 auto; border-bottom: 1px solid var(--rule); }
+    .page-hero .s-label { margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(32px, 4.5vw, 56px); font-weight: 200; letter-spacing: -0.03em; color: var(--ink); line-height: 1.1; max-width: 720px; }
+    .page-hero .page-sub { font-size: 15px; font-weight: 300; color: var(--muted); max-width: 560px; margin-top: 18px; line-height: 1.7; }
+
+    .page-body { max-width: var(--max); margin: 0 auto; padding: 56px var(--pad) 96px; display: grid; grid-template-columns: 240px 1fr; gap: 64px; align-items: start; }
+    .page-toc { position: sticky; top: 84px; }
+    .page-toc-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .page-toc ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .page-toc a { font-size: 13px; font-weight: 400; color: var(--muted); transition: color .12s; }
+    .page-toc a:hover { color: var(--ink); }
+
+    .page-content h2 { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; color: var(--ink); margin: 0 0 14px; scroll-margin-top: 84px; }
+    .page-content h3 { font-size: 15px; font-weight: 500; color: var(--ink); margin: 28px 0 10px; }
+    .page-content p { font-size: 14px; font-weight: 300; color: var(--body); line-height: 1.8; margin-bottom: 14px; }
+    .page-content ul, .page-content ol { margin: 0 0 16px 20px; }
+    .page-content li { font-size: 14px; font-weight: 300; color: var(--body); line-height: 1.8; margin-bottom: 6px; }
+    .page-content strong { font-weight: 500; color: var(--ink); }
+
+    .legal-block { padding: 32px 0; border-top: 1px solid var(--rule); }
+    .legal-block:first-of-type { border-top: none; padding-top: 0; }
+    .legal-block .product-tag { display:inline-block; font-size:10px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); border:1px solid var(--rule); padding:3px 10px; margin-bottom:10px; }
+
+    .info-card { background: var(--off); border: 1px solid var(--rule); padding: 28px; margin-bottom: 24px; }
+    .info-card h3 { margin-top: 0; }
+
+    .fee-table { width: 100%; border-collapse: collapse; margin: 16px 0 28px; }
+    .fee-table th, .fee-table td { text-align: left; padding: 12px 14px; font-size: 13px; border-bottom: 1px solid var(--rule); }
+    .fee-table th { font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+    .fee-table td { font-weight: 300; color: var(--body); }
+    .fee-table td:last-child, .fee-table th:last-child { text-align: right; }
+
+    @media (max-width: 860px) {
+      .page-body { grid-template-columns: 1fr; gap: 32px; }
+      .page-toc { position: static; }
+    }
+  </style>
+</head>
+<body>
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo logo-svg logo-dark" href="https://orbiscapgroup.com/comenity" aria-label="Comenity home">
+      <svg width="110" height="26" viewBox="0 0 440 90"><use href="#logo-sym"/></svg>
+    </a>
+
+    <ul class="nav-links">
+      <li>
+        <a href="#">Carduri de credit</a>
+        <div class="dd">
+          <div class="dd-group">
+            <div class="dd-label">Personale</div>
+            <a href="cash-card.html"><span class="logo-svg logo-dark"></span>comenity Cash® Card</a>
+            <a href="flex-card.html"><span class="logo-svg logo-dark"></span>comenity Flex® Card</a>
+          </div>
+          <div class="dd-group">
+            <div class="dd-label">Business</div>
+            <a href="business-cash.html"></span>comenity Business Cash®</a>
+            <a href="business-flex.html"></span>comenity Business Flex®</a>
+          </div>
+          <div class="dd-group">
+            <div class="dd-label">Corporate</div>
+            <a href="corporate-charge.html"></span>comenity Corporate® Charge Card</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#">Credite</a>
+        <div class="dd">
+          <div class="dd-group">
+            <div class="dd-label">Business</div>
+            <a href="lift.html"></span>comenity Lift®</a>
+            <a href="taxpay.html"></span>comenity TaxPay®</a>
+          </div>
+          <div class="dd-group">
+            <div class="dd-label">Corporate</div>
+            <a href="corporate-loans.html"><span class="logo-svg logo-dark"></span>comenity Corporate® Loans</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#">split®</a>
+        <div class="dd">
+          <div class="dd-group">
+            <a href="split-personal.html">split® Personal</a>
+            <a href="split-business.html">split® Business</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="nav-actions">
+      <a class="btn btn-ghost" href="ajutor.html">Ajutor</a>
+      <a class="btn btn-black" href="#">Contul meu</a>
+    </div>
+    <div class="nav-burger" aria-label="Meniu"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="page-hero reveal">
+  <div class="s-label">Legal</div>
+  <h1>Garantarea depozitelor</h1>
+  <p class="page-sub">Participarea Comenity Capital Bank S.A. la schema de garantare a depozitelor bancare din România.</p>
+</div>
+
+<section class="page-body">
+  <aside class="page-toc">
+    <div class="page-toc-label">Pe această pagină</div>
+    <ul>
+      <li><a href="#fgdb">Fondul de Garantare a Depozitelor Bancare</a></li>
+      <li><a href="#plafon">Plafonul de garantare</a></li>
+      <li><a href="#aplicabilitate">Ce este — și ce nu este — acoperit</a></li>
+      <li><a href="#plata">Modul de plată a compensațiilor</a></li>
+    </ul>
+  </aside>
+  <article class="page-content">
+    <h2 id="fgdb">Fondul de Garantare a Depozitelor Bancare</h2>
+    <p>Comenity Capital Bank S.A. este participant la <strong>Fondul de Garantare a Depozitelor Bancare (FGDB)</strong>, schema de garantare a depozitelor recunoscută oficial în România, în conformitate cu Legea nr. 311/2015 privind schemele de garantare a depozitelor și Fondul de garantare a depozitelor bancare.</p>
+
+    <h2 id="plafon">Plafonul de garantare</h2>
+    <div class="info-card">
+      <h3>Nivelul de acoperire</h3>
+      <p style="margin-bottom:0">Depozitele constituite la Comenity Capital Bank S.A. sunt garantate, per deponent, în echivalentul în lei a <strong>100.000 EUR</strong>, indiferent de numărul și valoarea depozitelor deținute la aceeași bancă. Acest plafon este stabilit prin legislația aplicabilă schemelor de garantare din Uniunea Europeană.</p>
+    </div>
+    <p>Notă: produsele comenity sunt, în prezent, produse de credit, charge și finanțare (carduri și împrumuturi), nu produse de economisire/depozit. Această pagină este publicată cu titlu informativ general, în conformitate cu obligațiile de transparență ale instituțiilor de credit privind schema de garantare la care sunt afiliate.</p>
+
+    <h2 id="aplicabilitate">Ce este — și ce nu este — acoperit</h2>
+    <ul>
+      <li>Sunt acoperite, conform legii: conturile curente, conturile de economii și depozitele la termen, în lei sau în valută.</li>
+      <li>Nu sunt acoperite: instrumentele financiare (acțiuni, obligațiuni, unități de fond), soldurile din carduri de credit/charge sau sumele utilizate prin serviciul split®.</li>
+      <li>Garanția se aplică automat, fără ca deponentul să trebuiască să depună vreo cerere.</li>
+    </ul>
+
+    <h2 id="plata">Modul de plată a compensațiilor</h2>
+    <p>În situația în care BNR ar constata indisponibilizarea depozitelor unei bănci participante, FGDB are obligația legală de a plăti compensațiile către deponenți în termenele prevăzute de Legea nr. 311/2015, fără a fi necesară o cerere expresă din partea acestora.</p>
+    <p>Detalii complete privind funcționarea schemei de garantare sunt disponibile pe site-ul oficial al <a href="https://www.fgdb.ro">Fondului de Garantare a Depozitelor Bancare</a>.</p>
+  </article>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <span class="logo-svg logo-dark"><svg width="110" height="26" viewBox="0 0 440 90"><use href="#logo-sym"/></svg></span>
+        <p class="footer-tagline">Carduri de credit simple, sigure și flexibile. Construit pentru România.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">comenity</div>
+        <ul>
+          <li><a href="despre-noi.html">Despre noi</a></li>
+          <li><a href="cariere.html">Cariere</a></li>
+          <li><a href="ajutor.html">Starea Serviciilor</a></li>
+          <li><a href="ajutor.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Legal</div>
+        <ul>
+          <li><a href="guvernanta-corporativa.html">Guvernanță corporativă</a></li>
+          <li><a href="informatii-mifid.html">Informații MIFID</a></li>
+          <li><a href="garantarea-depozitelor.html">Garantarea depozitelor</a></li>
+          <li><a href="comisioane.html">Comisioane</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Ajutor · 24/7</div>
+        <ul>
+          <li><a href="ajutor.html">Help Center</a></li>
+          <li><a href="ajutor.html">FAQ</a></li>
+          <li><span>*2211 · 0800 222 111</span></li>
+          <li><a href="mailto:help@comenity.ro">help@comenity.ro</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-links">
+        <a href="terms.html">Termeni și condiții</a>
+        <a href="https://anpc.ro">ANPC</a>
+        <a href="https://CSALB.ro">CSALB</a>
+        <a href="ajutor.html">Live Chat</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" aria-label="X"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      </div>
+    </div>
+    <p class="footer-copy">©2026 Comenity Capital Bank, a Bread Financial Company. Comenity Capital Bank S.A., Șos. Fabrica de Glucoză nr. 5, Novo Park 3, Sector 2, București · J40/4429/2009 · CUI 25394008 · RB-PJR-40-066/2009 · PJR01INCR/400019/28.03.2019. Toate cardurile sunt emise în cadrul rețelei Mastercard. Serviciul split® este oferit de Split by Comenity IFN S.A.</p>
+  </div>
+</footer>
+<script>
+/* ── Scroll reveal ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ── Hero canvas: animated flowing lines ── */
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, lines, raf;
+
+  function resize() {
+    W = canvas.offsetWidth;
+    H = canvas.offsetHeight;
+    canvas.width  = W * devicePixelRatio;
+    canvas.height = H * devicePixelRatio;
+    ctx.scale(devicePixelRatio, devicePixelRatio);
+    init();
+  }
+
+  function init() {
+    // Generate a set of long diagonal lines with varying speeds and offsets
+    lines = [];
+    const count = 18;
+    for (let i = 0; i < count; i++) {
+      lines.push({
+        // x start position across the full width + some bleed
+        xBase: (i / count) * (W * 1.6) - W * 0.3,
+        speed: 0.12 + Math.random() * 0.18,   // px/frame
+        opacity: 0.03 + Math.random() * 0.055,
+        width: 0.5 + Math.random() * 0.8,
+        offset: Math.random() * H * 2,        // vertical travel phase
+      });
+    }
+  }
+
+  let tick = 0;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    lines.forEach(ln => {
+      // Lines travel diagonally top-right to bottom-left
+      // yShift scrolls them downward slowly
+      const yShift = (tick * ln.speed + ln.offset) % (H * 2);
+      // line goes from top-right area to bottom-left
+      // parametric: as t goes 0→1, we go from upper-right to lower-left
+      const angle = -35 * Math.PI / 180; // -35 degrees
+      const len = Math.sqrt(W * W + H * H) * 1.2;
+
+      const cx = ln.xBase + yShift * 0.5;
+      const cy = -H * 0.2 + yShift * 0.5;
+
+      const x1 = cx - Math.cos(angle) * len * 0.5;
+      const y1 = cy - Math.sin(angle) * len * 0.5;
+      const x2 = cx + Math.cos(angle) * len * 0.5;
+      const y2 = cy + Math.sin(angle) * len * 0.5;
+
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.strokeStyle = `rgba(10,10,10,${ln.opacity})`;
+      ctx.lineWidth = ln.width;
+      ctx.stroke();
+    });
+
+    tick++;
+    raf = requestAnimationFrame(draw);
+  }
+
+  // Respect reduced motion
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReduced) {
+    window.addEventListener('resize', () => { cancelAnimationFrame(raf); resize(); draw(); });
+    resize();
+    draw();
+  }
+})();
+</script>
+</body>
+</html>
