@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virelle — Configurare debit direct</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14171F;
+    --paper:#FBFBFA;
+    --line:#E7E5DF;
+    --cobalt:#2C3E9E;
+    --cobalt-deep:#1C2A73;
+    --sage:#7FA88F;
+    --sand:#F3F1EA;
+    --muted:#6C6F7A;
+    --error:#B5473A;
+    --radius:14px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px 20px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    width:100%;
+    max-width:460px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    margin-bottom:36px;
+  }
+  .brand svg{height:26px;}
+  .card-visual{
+    position:relative;
+    height:180px;
+    border-radius:20px;
+    background:linear-gradient(135deg, var(--cobalt) 0%, var(--cobalt-deep) 100%);
+    color:#fff;
+    padding:22px 24px;
+    margin-bottom:28px;
+    overflow:hidden;
+    box-shadow:0 20px 40px -18px rgba(28,42,115,0.45);
+  }
+  .card-visual::before{
+    content:"";
+    position:absolute;
+    top:-60px; right:-60px;
+    width:200px; height:200px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+  }
+  .card-visual::after{
+    content:"";
+    position:absolute;
+    bottom:-90px; left:-40px;
+    width:220px; height:220px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(127,168,143,0.18), transparent 70%);
+  }
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    position:relative;
+    z-index:1;
+  }
+  .card-brand{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:17px;
+    font-weight:600;
+    letter-spacing:0.2px;
+  }
+  .chip{
+    width:34px; height:26px;
+    border-radius:5px;
+    background:linear-gradient(135deg,#E4CB8A,#B99A4F);
+    margin-top:38px;
+  }
+  .card-number-display{
+    font-family:'JetBrains Mono', monospace;
+    font-size:19px;
+    letter-spacing:2.5px;
+    margin-top:18px;
+    position:relative;
+    z-index:1;
+    color:rgba(255,255,255,0.94);
+  }
+  .card-number-display .ghost{ color:rgba(255,255,255,0.4); }
+  .card-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-top:16px;
+    position:relative;
+    z-index:1;
+  }
+  .card-label{
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:1.2px;
+    color:rgba(255,255,255,0.55);
+    margin-bottom:4px;
+  }
+  .card-value{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:rgba(255,255,255,0.9);
+  }
+
+  .panel{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:32px 28px;
+  }
+  .panel h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:21px;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .panel p.sub{
+    color:var(--muted);
+    font-size:13.5px;
+    margin-bottom:26px;
+    line-height:1.5;
+  }
+  .field{
+    margin-bottom:18px;
+  }
+  .field label{
+    display:block;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.2px;
+    margin-bottom:7px;
+    color:var(--ink);
+  }
+  .field input{
+    width:100%;
+    padding:13px 14px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:14.5px;
+    letter-spacing:1px;
+    color:var(--ink);
+    background:var(--sand);
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .field input:focus{
+    outline:none;
+    border-color:var(--cobalt);
+    background:#fff;
+  }
+  .field input.error{
+    border-color:var(--error);
+    background:#FBF0EE;
+  }
+  .field .hint{
+    font-size:11.5px;
+    color:var(--muted);
+    margin-top:6px;
+  }
+  .field .hint.error-text{
+    color:var(--error);
+  }
+  .row-two{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  .submit-btn{
+    width:100%;
+    padding:14px;
+    margin-top:8px;
+    background:var(--ink);
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    font-family:'Inter', sans-serif;
+    font-size:14.5px;
+    font-weight:600;
+    letter-spacing:0.2px;
+    cursor:pointer;
+    transition:background .15s ease, transform .1s ease;
+  }
+  .submit-btn:hover{ background:var(--cobalt-deep); }
+  .submit-btn:active{ transform:scale(0.99); }
+  .submit-btn:disabled{
+    background:#C7C9D1;
+    cursor:not-allowed;
+  }
+  .legal{
+    font-size:11px;
+    color:var(--muted);
+    line-height:1.5;
+    margin-top:18px;
+    text-align:center;
+  }
+
+  /* Processing overlay */
+  .overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(20,23,31,0.55);
+    backdrop-filter:blur(3px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease;
+    z-index:50;
+  }
+  .overlay.show{
+    opacity:1;
+    pointer-events:all;
+  }
+  .overlay-card{
+    background:#fff;
+    border-radius:20px;
+    padding:40px 36px;
+    width:100%;
+    max-width:360px;
+    text-align:center;
+  }
+  .spinner{
+    width:52px; height:52px;
+    margin:0 auto 22px;
+    border-radius:50%;
+    border:3px solid var(--line);
+    border-top-color:var(--cobalt);
+    animation:spin 0.9s linear infinite;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .overlay-card h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:16px;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .overlay-card p{
+    font-size:13px;
+    color:var(--muted);
+    line-height:1.5;
+  }
+  .progress-track{
+    width:100%;
+    height:4px;
+    background:var(--sand);
+    border-radius:4px;
+    margin-top:22px;
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    width:0%;
+    background:var(--cobalt);
+    border-radius:4px;
+    transition:width .3s linear;
+  }
+
+  /* Success state */
+  .success-wrap{
+    display:none;
+    text-align:center;
+    padding:8px 4px 4px;
+  }
+  .success-wrap.show{ display:block; }
+  .success-icon{
+    width:64px; height:64px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    background:var(--sage);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .success-icon svg{ width:28px; height:28px; }
+  .success-wrap h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:20px;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .success-wrap p{
+    font-size:13.5px;
+    color:var(--muted);
+    line-height:1.55;
+    margin-bottom:22px;
+  }
+  .receipt{
+    background:var(--sand);
+    border-radius:12px;
+    padding:16px 18px;
+    text-align:left;
+    margin-bottom:22px;
+  }
+  .receipt-row{
+    display:flex;
+    justify-content:space-between;
+    font-size:12.5px;
+    padding:6px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .receipt-row:last-child{ border-bottom:none; }
+  .receipt-row span:first-child{ color:var(--muted); }
+  .receipt-row span:last-child{ font-family:'JetBrains Mono', monospace; font-weight:500; }
+  .done-btn{
+    width:100%;
+    padding:13px;
+    background:transparent;
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--ink);
+    cursor:pointer;
+  }
+  .done-btn:hover{ background:var(--sand); }
+
+  .form-view{ display:block; }
+  .form-view.hide{ display:none; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="brand">
+    <svg viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="8" fill="#1C2A73"/><path d="M8 14a6 6 0 1 1 6 6" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+    <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px; letter-spacing:-0.3px;">virelle | comenity capital</span>
+  </div>
+
+  <div class="panel">
+    <div class="form-view" id="formView">
+      <h1>Configurează debitarea directă</h1>
+      <p class="sub">Leagă contul tău bancar pentru plata automată a facturii cardului comenity, în fiecare lună, la scadență.</p>
+
+      <form id="ddForm" novalidate>
+        <div class="field">
+          <label for="cardNumber">Numărul cardului comenity</label>
+          <input type="text" id="cardNumber" inputmode="numeric" placeholder="0000 0000 0000 0000" maxlength="19" autocomplete="off">
+          <div class="hint" id="cardHint">Introdu cele 16 cifre de pe cardul tău</div>
+        </div>
+
+        <div class="field">
+          <label for="iban1">IBAN cont bancar</label>
+          <input type="text" id="iban1" placeholder="RO00XXXX0000000000000000" maxlength="24" autocomplete="off" style="text-transform:uppercase;">
+          <div class="hint">Contul din care se va face debitarea lunară</div>
+        </div>
+
+        <div class="field">
+          <label for="iban2">Confirmă IBAN-ul</label>
+          <input type="text" id="iban2" placeholder="RO00XXXX0000000000000000" maxlength="24" autocomplete="off" style="text-transform:uppercase;">
+          <div class="hint" id="ibanHint">Reintrodu IBAN-ul pentru confirmare</div>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Activează debitul direct</button>
+      </form>
+
+      <p class="legal">Prin activarea acestei opțiuni, autorizezi în mod expres Virelle Europe Payments S.L. să inițieze, în numele Comenity Capital Bank S.A., debitări lunare din contul de plată indicat de tine, în vederea achitării sumelor datorate conform extrasului de cont sau facturii emise de Comenity Capital Bank S.A., la sau după data scadenței. Autorizația rămâne valabilă până la retragerea acesteia de către tine și poate fi revocată în orice moment din setările contului tău Comenity, fără a afecta debitările deja inițiate sau obligațiile de plată existente.</p>
+      <br>
+      <p class="legal">Virelle Europe Payments S.L. face parte din Comenity Financial, an Orbis Capital Group company. © Virelle.</p>
+    </div>
+
+    <div class="success-wrap" id="successView">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2>Debit direct activat</h2>
+      <p>Facturile cardului comenity vor fi plătite automat, în fiecare lună, din contul bancar indicat.</p>
+      <div class="receipt">
+        <div class="receipt-row"><span>Card</span><span id="rCard">•••• 8841</span></div>
+        <div class="receipt-row"><span>Cont debitare</span><span id="rIban">RO09 •••• 9001</span></div>
+        <div class="receipt-row"><span>Status</span><span style="color:#1C2A73;">Activ</span></div>
+      </div>
+      <button class="done-btn" id="doneBtn">Înapoi la cont</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="overlay-card">
+    <div class="spinner"></div>
+    <h3>Configurăm debitarea directă</h3>
+    <p id="statusText">Verificăm datele contului bancar…</p>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+</div>
+
+<script>
+  const cardInput = document.getElementById('cardNumber');
+  const cardPreview = document.getElementById('cardPreview');
+  const iban1 = document.getElementById('iban1');
+  const iban2 = document.getElementById('iban2');
+  const ibanHint = document.getElementById('ibanHint');
+  const form = document.getElementById('ddForm');
+  const overlay = document.getElementById('overlay');
+  const progressFill = document.getElementById('progressFill');
+  const statusText = document.getElementById('statusText');
+  const formView = document.getElementById('formView');
+  const successView = document.getElementById('successView');
+  const rCard = document.getElementById('rCard');
+  const rIban = document.getElementById('rIban');
+  const doneBtn = document.getElementById('doneBtn');
+
+  // Format card number as it's typed: 0000 0000 0000 0000
+  cardInput.addEventListener('input', () => {
+    let digits = cardInput.value.replace(/\D/g,'').slice(0,16);
+    let formatted = digits.replace(/(.{4})/g,'$1 ').trim();
+    cardInput.value = formatted;
+    updateCardPreview(digits);
+  });
+
+  function updateCardPreview(digits){
+    let groups = ['••••','••••','••••','••••'];
+    for(let i=0;i<4;i++){
+      const chunk = digits.slice(i*4,(i+1)*4);
+      if(chunk.length === 4){ groups[i] = chunk; }
+      else if(chunk.length > 0){ groups[i] = chunk.padEnd(4,'•'); }
+    }
+    cardPreview.innerHTML = groups.map(g => `<span>${g}</span>`).join(' ');
+  }
+
+  [iban1, iban2].forEach(el => {
+    el.addEventListener('input', () => {
+      el.value = el.value.toUpperCase().replace(/\s/g,'');
+    });
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let valid = true;
+
+    // basic card validation
+    const digits = cardInput.value.replace(/\D/g,'');
+    if(digits.length !== 16){
+      cardInput.classList.add('error');
+      valid = false;
+    } else {
+      cardInput.classList.remove('error');
+    }
+
+    // IBAN match validation
+    if(iban1.value.length < 10){
+      iban1.classList.add('error');
+      valid = false;
+    } else {
+      iban1.classList.remove('error');
+    }
+
+    if(iban2.value !== iban1.value || iban2.value.length < 10){
+      iban2.classList.add('error');
+      ibanHint.textContent = 'IBAN-urile introduse nu coincid';
+      ibanHint.classList.add('error-text');
+      valid = false;
+    } else {
+      iban2.classList.remove('error');
+      ibanHint.textContent = 'Reintrodu IBAN-ul pentru confirmare';
+      ibanHint.classList.remove('error-text');
+    }
+
+    if(!valid) return;
+
+    // populate receipt
+    rCard.textContent = '•••• ' + digits.slice(-4);
+    rIban.textContent = iban1.value.slice(0,4) + ' •••• ' + iban1.value.slice(-4);
+
+    runProcessing();
+  });
+
+  function runProcessing(){
+    overlay.classList.add('show');
+    const messages = [
+      'Verificăm datele contului bancar…',
+      'Confirmăm cardul comenity…',
+      'Stabilim legătura cu Banca Transilvania…',
+      'Finalizăm configurarea…'
+    ];
+    let msgIndex = 0;
+    statusText.textContent = messages[0];
+
+    const totalMs = 30000;
+    const stepMs = 100;
+    let elapsed = 0;
+
+    const msgInterval = setInterval(() => {
+      msgIndex = (msgIndex + 1) % messages.length;
+      statusText.textContent = messages[msgIndex];
+    }, 7000);
+
+    const progressInterval = setInterval(() => {
+      elapsed += stepMs;
+      const pct = Math.min(100, (elapsed/totalMs)*100);
+      progressFill.style.width = pct + '%';
+      if(elapsed >= totalMs){
+        clearInterval(progressInterval);
+        clearInterval(msgInterval);
+        overlay.classList.remove('show');
+        formView.classList.add('hide');
+        successView.classList.add('show');
+      }
+    }, stepMs);
+  }
+
+  doneBtn.addEventListener('click', () => {
+    successView.classList.remove('show');
+    formView.classList.remove('hide');
+    form.reset();
+    updateCardPreview('');
+    cardInput.classList.remove('error');
+    iban1.classList.remove('error');
+    iban2.classList.remove('error');
+    ibanHint.textContent = 'Reintrodu IBAN-ul pentru confirmare';
+    ibanHint.classList.remove('error-text');
+    progressFill.style.width = '0%';
+  });
+</script>
+
+</body>
+</html>
